@@ -1,0 +1,96 @@
+[
+  {
+    "collectionSymbol": "y00ts",
+    "name": "y00ts",
+    "image": "https://bafkreidc5co72clgqor54gpugde6tr4otrubjfqanj4vx4ivjwxnhqgaai.ipfs.nftstorage.link/",
+    "onChainCollectionAddress": "4mKSoDDqApmF1DqXvVTSL6tu2zixrSSNjqMxUnwvVzy2",
+    "mintAddress": ""
+  },
+  {
+    "collectionSymbol": "t00bs",
+    "name": "y00ts: mint t00bs",
+    "image": "https://bafybeigjqyvd6mrjpqficz3hygcpttmbrlcvkakartrsmqtdfds5nfyjga.ipfs.nftstorage.link/",
+    "sellerFeeBasisPoints": 0,
+    "onChainCollectionAddress": "",
+    "mintAddress": "9P1pVkfGErLKY8bEC5smKytBoAFujpoUdCo8LnQGeg3M"
+  },
+  {
+    "collectionSymbol": "degods",
+    "name": "DeGods",
+    "image": "https://bafkreicndlrqersl63a7fpk6zzw73lsklj5bwsidk74n4solbcyz2g3viq.ipfs.nftstorage.link/",
+    "sellerFeeBasisPoints": 0,
+    "onChainCollectionAddress": "6XxjKYFbcndh2gDcsUrmZgVEsoDxXMnfsaGY6fpTJzNr",
+    "mintAddress": ""
+  },
+  {
+    "collectionSymbol": "blocksmith_labs",
+    "name": "Smyths",
+    "image": "https://bafkreih3jh6bz4g5xegjz622ogjdnkwwwnx35opnenh2nzstqnczomo7ha.ipfs.nftstorage.link/",
+    "sellerFeeBasisPoints": 0,
+    "onChainCollectionAddress": "",
+    "mintAddress": "AdShyNDStR1RGaMNhnRoSxXZLMdJwjZwjDPDJRmHrt4m"
+  },
+  {
+    "collectionSymbol": "okay_bears",
+    "name": "Okay Bears",
+    "image": "https://bafkreidgfsdjx4nt4vctch73hcchb3pkiwic2onfw5yr4756adchogk5de.ipfs.nftstorage.link/",
+    "onChainCollectionAddress": "3saAedkM9o5g1u5DCqsuMZuC4GRqPB4TuMkvSsSVvGQ3",
+    "mintAddress": ""
+  },
+  {
+    "collectionSymbol": "abc_abracadabra",
+    "name": "ABC",
+    "image": "https://bafybeie4f7n526mxpp2jgixpc4e7b7vpkae4sglks37lzj7tiwghxyvel4.ipfs.nftstorage.link/",
+    "onChainCollectionAddress": "ES2iF5ctjqvtopPn4n6K7c9fdHjYg41rYXL2XzJK37jF",
+    "mintAddress": ""
+  },
+  {
+    "collectionSymbol": "meta_tattoo_club",
+    "name": "Meta Tattoo Club",
+    "image": "https://bafybeih3wfmqhia27ah4n5q36h3daqqac4zmn4zkys5mhoasb3tm6yjxsa.ipfs.nftstorage.link/",
+    "onChainCollectionAddress": "",
+    "mintAddress": "FCfTu3mQwjqcFRd56B9nmzF2wqmdrbHnUGtaSvaFN6up"
+  },
+  {
+    "collectionSymbol": "taiyo_robotics",
+    "name": "Taiyo Robotics",
+    "image": "https://dl.airtable.com/.attachmentThumbnails/72a25e9d4d6f89582ebddb4e17aad0e6/bd10fa1b",
+    "onChainCollectionAddress": "",
+    "mintAddress": "5yS3XtPua4Sc7TJu5xnujeaqJNioXMNuY9gUzxFnWKKY"
+  },
+  {
+    "collectionSymbol": "lunar",
+    "name": "Lunar",
+    "image": "https://creator-hub-prod.s3.us-east-2.amazonaws.com/lunar_pfp_1666064540687.jpeg",
+    "onChainCollectionAddress": "1AxyTA43WoBeYaeiuEhJYoWgJ3uYpYfNiBfDQDMdrvL",
+    "mintAddress": ""
+  },
+  {
+    "collectionSymbol": "solana_monkey_business",
+    "name": "Solana Monkey Business",
+    "image": "https://i.imgur.com/bMH6qNc.png",
+    "onChainCollectionAddress": "SMBH3wF6baUj6JWtzYvqcKuj2XCKWDqQxzspY12xPND",
+    "mintAddress": ""
+  },
+  {
+    "collectionSymbol": "cets_on_creck",
+    "name": "CETS ON CRECK",
+    "image": "https://creator-hub-prod.s3.us-east-2.amazonaws.com/cats_on_crack_pfp_1644850873089.png",
+    "onChainCollectionAddress": "",
+    "mintAddress": "4Kcwv9Me1GeqcTrpncEXhSSU2eWnFusdjE1rXS2qfrxi"
+  },
+  {
+    "collectionSymbol": "degenerate_ape_academy",
+    "name": "Degenerate Ape Academy",
+    "image": "https://bafkreie44hlb5xve225n6p2siebaevxiwha37aefyvs2ul2kx2akalnree.ipfs.nftstorage.link/",
+    "onChainCollectionAddress": "DSwfRF1jhhu6HpSuzaig1G19kzP73PfLZBPLofkw6fLD",
+    "mintAddress": ""
+  },
+  {
+    "collectionSymbol": "famous_fox_federation",
+    "name": "Famous Fox Federation",
+    "image": "https://bafkreihrmpd2qqlnwqsceyp572kkvzet4mzn2ndrnteodwyhgu4m4gnzwq.ipfs.nftstorage.link/",
+    "onChainCollectionAddress": "BUjZjAS2vbbb65g7Z1Ca9ZRVYoJscURG5L3AkVvHP9ac",
+    "mintAddress": ""
+  }
+]
