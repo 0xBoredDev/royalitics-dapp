@@ -5,10 +5,6 @@ import { BasicsView } from "../views";
 const Basics: NextPage = (props) => {
   return (
     <div>
-      <Head children={""}>
-        <title>Solana Scaffold</title>
-        <meta name="description" content="Basic Functionality" />
-      </Head>
       <BasicsView />
     </div>
   );
