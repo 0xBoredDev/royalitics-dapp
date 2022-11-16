@@ -6,7 +6,8 @@
 .select-search-container {
   --select-search-background: #fff;
   --select-search-border: #dce0e8;
-  --select-search-selected: #1e66f5;
+  /* On Input field selected */
+  --select-search-selected: #9945ff;
   --select-search-text: #000;
   --select-search-subtle-text: #6c6f85;
   --select-search-inverted-text: var(--select-search-background);
@@ -49,7 +50,7 @@ body.is-dark-mode .select-search-container {
 body.is-light-mode .select-search-container {
   --select-search-background: #fff;
   --select-search-border: #dce0e8;
-  --select-search-selected: #1e66f5;
+  --select-search-selected: #9945ff;
   --select-search-text: #000;
   --select-search-subtle-text: #6c6f85;
   --select-search-highlight: #eff1f5;
@@ -64,14 +65,14 @@ body.is-light-mode .select-search-container {
 .select-search-input {
   position: relative;
   z-index: 1;
-  display: block;
+  display: flex;
   height: 48px;
   width: 100%;
   padding: 0 40px 0 16px;
   background: var(--select-search-background);
   border: 2px solid var(--select-search-border);
   color: var(--select-search-text);
-  border-radius: 3px;
+  border-radius: 50px;
   outline: none;
   font-family: var(--select-search-font);
   font-size: 16px;

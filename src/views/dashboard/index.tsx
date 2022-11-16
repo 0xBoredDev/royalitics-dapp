@@ -1,3 +1,4 @@
+import { SearchIcon } from "@heroicons/react/outline";
 import { RoyaltyByMonth } from "components/charts/RoyaltyByMonth";
 import { RoyaltyByUser } from "components/charts/RoyaltyByUser";
 import { TotalByMarketplace } from "components/charts/TotalByMarketplace";
@@ -46,6 +47,20 @@ const dataByMP = [
   { name: "OpenSea", royalty: 189 },
 ];
 
+function renderValue(valueProps, snapshot, className) {
+  return (
+    <label className="relative flex text-gray-400 text-slate-700 block">
+      <SearchIcon className="pointer-events-none w-6 h-6 absolute top-1/2 transform -translate-y-1/2 left-3 " />
+      {/* "flex items-center rounded-full w-full h-12 pl-12 text-white bg-black border-2 border-slate-700 p-2 text-sm hover:border-purple-700" */}
+      <input
+        {...valueProps}
+        className={
+          "flex items-center rounded-full w-full h-12 pl-12 text-white bg-black border-2 border-slate-700 p-2 text-sm hover:border-purple-700 focus:outline-none"
+        }
+      />
+    </label>
+  );
+}
 function renderCollection(props, option, _, className) {
   const imgStyle = {
     borderRadius: "50%",
@@ -95,15 +110,13 @@ export const DashboardView: FC = () => {
             search
             autoComplete="on"
             renderOption={renderCollection}
-            onChange={(value) => setCollection(value.toString())}
+            renderValue={renderValue}
+            onChange={(value) => {
+              console.log(value);
+              setCollection(value.toString());
+            }}
             value={collection}
           />
-          <button
-            className="btn btn-primary"
-            onClick={() => console.log(collection)}
-          >
-            Search
-          </button>
         </div>
 
         <RoyaltyByMonth data={dataByMonth} />
