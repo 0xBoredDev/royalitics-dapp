@@ -14,9 +14,9 @@ require("../styles/globals.css");
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>Solana Scaffold Lite</title>
-      </Head>
+      </Head> */}
 
       <ContextProvider>
         <div className="flex flex-col h-screen">

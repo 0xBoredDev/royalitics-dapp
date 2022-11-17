@@ -6,11 +6,8 @@ const Analytics: NextPage = (props) => {
   return (
     <div>
       <Head>
-        <title>Royalitics</title>
-        <meta
-          name="description"
-          content="Basic Functionality"
-        />
+        <title>Smart Royalitics</title>
+        <meta name="description" content="Analytics" />
       </Head>
       <AnalyticsView />
     </div>

@@ -2,107 +2,121 @@
   {
     "collectionSymbol": "y00ts",
     "name": "y00ts",
+    "description": "y00ts is a generative art project of 15,000 NFTs. y00topia is a curated community of builders and creators. Each y00t was designed by De Labs in Los Angeles, CA.",
     "image": "https://bafkreidc5co72clgqor54gpugde6tr4otrubjfqanj4vx4ivjwxnhqgaai.ipfs.nftstorage.link/",
     "onChainCollectionAddress": "4mKSoDDqApmF1DqXvVTSL6tu2zixrSSNjqMxUnwvVzy2",
     "mintAddress": "",
-    "value": "4mKSoDDqApmF1DqXvVTSL6tu2zixrSSNjqMxUnwvVzy2"
+    "value": "0"
   },
   {
     "collectionSymbol": "t00bs",
     "name": "y00ts: mint t00bs",
+    "description": "Each t00b can be burned to redeem a y00t. Are you going to keep the t00b or get the y00t?",
     "image": "https://bafybeigjqyvd6mrjpqficz3hygcpttmbrlcvkakartrsmqtdfds5nfyjga.ipfs.nftstorage.link/",
     "sellerFeeBasisPoints": 0,
     "onChainCollectionAddress": "",
     "mintAddress": "9P1pVkfGErLKY8bEC5smKytBoAFujpoUdCo8LnQGeg3M",
-    "value": "9P1pVkfGErLKY8bEC5smKytBoAFujpoUdCo8LnQGeg3M"
+    "value": "1"
   },
   {
     "collectionSymbol": "degods",
     "name": "DeGods",
+    "description": "DeGods is a digital art collection and global community of creators, developers, entrepreneurs, athletes, artists, experimenters and innovators.",
     "image": "https://bafkreicndlrqersl63a7fpk6zzw73lsklj5bwsidk74n4solbcyz2g3viq.ipfs.nftstorage.link/",
     "sellerFeeBasisPoints": 0,
     "onChainCollectionAddress": "6XxjKYFbcndh2gDcsUrmZgVEsoDxXMnfsaGY6fpTJzNr",
     "mintAddress": "",
-    "value": "6XxjKYFbcndh2gDcsUrmZgVEsoDxXMnfsaGY6fpTJzNr"
+    "value": "2"
   },
   {
     "collectionSymbol": "blocksmith_labs",
     "name": "Smyths",
+    "description": "Smyths is a collection of 4444 noble beings forged through sacred flames. Visit smyths.io to stake and get $FORGE.",
     "image": "https://bafkreih3jh6bz4g5xegjz622ogjdnkwwwnx35opnenh2nzstqnczomo7ha.ipfs.nftstorage.link/",
     "sellerFeeBasisPoints": 0,
     "onChainCollectionAddress": "",
     "mintAddress": "AdShyNDStR1RGaMNhnRoSxXZLMdJwjZwjDPDJRmHrt4m",
-    "value": "AdShyNDStR1RGaMNhnRoSxXZLMdJwjZwjDPDJRmHrt4m"
+    "value": "3"
   },
   {
     "collectionSymbol": "okay_bears",
     "name": "Okay Bears",
+    "description": "Okay Bears is a culture shift. A clean collection of 10,000 diverse bears building a virtuous community that will transcend the internet into the real world.",
     "image": "https://bafkreidgfsdjx4nt4vctch73hcchb3pkiwic2onfw5yr4756adchogk5de.ipfs.nftstorage.link/",
     "onChainCollectionAddress": "3saAedkM9o5g1u5DCqsuMZuC4GRqPB4TuMkvSsSVvGQ3",
     "mintAddress": "",
-    "value": "3saAedkM9o5g1u5DCqsuMZuC4GRqPB4TuMkvSsSVvGQ3"
+    "value": "4"
   },
   {
     "collectionSymbol": "abc_abracadabra",
     "name": "ABC",
+    "description": "ABC - Abracadabra A collection of 10K immutable NFTs, 0% royalties. Made to remind you of how fun things were when we were kids, before growing up - let`s never stop having fun! *This project has no official Twitter or Discord*",
     "image": "https://bafybeie4f7n526mxpp2jgixpc4e7b7vpkae4sglks37lzj7tiwghxyvel4.ipfs.nftstorage.link/",
     "onChainCollectionAddress": "ES2iF5ctjqvtopPn4n6K7c9fdHjYg41rYXL2XzJK37jF",
     "mintAddress": "",
-    "value": "ES2iF5ctjqvtopPn4n6K7c9fdHjYg41rYXL2XzJK37jF"
+    "value": "5"
   },
   {
     "collectionSymbol": "meta_tattoo_club",
     "name": "Meta Tattoo Club",
+    "description": "Alongside monthly tattoo giveaways of a lifetime, Meta Tattoo club will be expanding their tattoo shops worldwide where holders will receive exclusive benefits. In addition, MTC is introducing their native token $INK which u can earn in their game “DRINK THE INK”. The community will be able to accumulate & use $INK in a variety of different IRL & Web3 utilities!",
     "image": "https://bafybeih3wfmqhia27ah4n5q36h3daqqac4zmn4zkys5mhoasb3tm6yjxsa.ipfs.nftstorage.link/",
     "onChainCollectionAddress": "",
     "mintAddress": "FCfTu3mQwjqcFRd56B9nmzF2wqmdrbHnUGtaSvaFN6up",
-    "value": "FCfTu3mQwjqcFRd56B9nmzF2wqmdrbHnUGtaSvaFN6up"
+    "value": "6"
   },
   {
     "collectionSymbol": "taiyo_robotics",
     "name": "Taiyo Robotics",
+    "description": "Taiyo Robotics are 2,121 Robots that have been manufactured on the Solana blockchain. They have been created to protect the world against giant monsters that have plagued earth.",
     "image": "https://dl.airtable.com/.attachmentThumbnails/72a25e9d4d6f89582ebddb4e17aad0e6/bd10fa1b",
     "onChainCollectionAddress": "",
     "mintAddress": "5yS3XtPua4Sc7TJu5xnujeaqJNioXMNuY9gUzxFnWKKY",
-    "value": "5yS3XtPua4Sc7TJu5xnujeaqJNioXMNuY9gUzxFnWKKY"
+    "value": "7"
   },
   {
-    "collectionSymbol": "lunar",
-    "name": "Lunar",
-    "image": "https://creator-hub-prod.s3.us-east-2.amazonaws.com/lunar_pfp_1666064540687.jpeg",
-    "onChainCollectionAddress": "1AxyTA43WoBeYaeiuEhJYoWgJ3uYpYfNiBfDQDMdrvL",
-    "mintAddress": "",
-    "value": "1AxyTA43WoBeYaeiuEhJYoWgJ3uYpYfNiBfDQDMdrvL"
+    "collectionSymbol": "vandal_city",
+    "name": "Vandals",
+    "description": "A collection of 10,000 Bandits, Outcasts, & Misfits of the Metaverse. Vandal City is the epicenter of Web3 innovation, fostering top tier utilities and art.",
+    "image": "https://cdn.discordapp.com/attachments/975048153843777577/1005302647491928124/unknown.png",
+    "onChainCollectionAddress": "",
+    "mintAddress": "Fda88Vre4buSDgKik5XtXo6b93LZZBbApqdZWrZypggQ",
+    "value": "8"
   },
   {
     "collectionSymbol": "solana_monkey_business",
     "name": "Solana Monkey Business",
+    "description": "SMB is a collection of 5000 unique randomly generated SolanaMonkeys stored on the blockchain. With their accessibility-oriented design, the monkeys' goal is to invade the Solana blockchain with as many individuals as possible, building a large community around them, supported by owner-exclusive advantages, a community wallet and a future voting system. Reject humanity, return to monke.",
     "image": "https://i.imgur.com/bMH6qNc.png",
     "onChainCollectionAddress": "SMBH3wF6baUj6JWtzYvqcKuj2XCKWDqQxzspY12xPND",
     "mintAddress": "",
-    "value": "SMBH3wF6baUj6JWtzYvqcKuj2XCKWDqQxzspY12xPND"
+    "value": "9"
   },
   {
     "collectionSymbol": "cets_on_creck",
     "name": "CETS ON CRECK",
+    "description": "It`s just a bunch of crecked cets, who`re upto a whole of rat shit that are livin`, and chillin` and vibin` together. They`re picking bullshit catfights, posting their own mugshots, cat calling the cops and stirring whatever they can to keep the high going.",
     "image": "https://creator-hub-prod.s3.us-east-2.amazonaws.com/cats_on_crack_pfp_1644850873089.png",
     "onChainCollectionAddress": "",
     "mintAddress": "4Kcwv9Me1GeqcTrpncEXhSSU2eWnFusdjE1rXS2qfrxi",
-    "value": "4Kcwv9Me1GeqcTrpncEXhSSU2eWnFusdjE1rXS2qfrxi"
+    "value": "10"
   },
   {
     "collectionSymbol": "degenerate_ape_academy",
     "name": "Degenerate Ape Academy",
+    "description": "Our mission here at the academy is simple: Take 10,000 of the smoothest brained apes, put them all in one location and let the mayhem ensue. The academy was founded on the principles of friendship making, crayon eating and absolute, unregulated, deplorable, degenerate behaviour. Welcome fellow apes, to the Degenerate Ape Academy.",
     "image": "https://bafkreie44hlb5xve225n6p2siebaevxiwha37aefyvs2ul2kx2akalnree.ipfs.nftstorage.link/",
     "onChainCollectionAddress": "DSwfRF1jhhu6HpSuzaig1G19kzP73PfLZBPLofkw6fLD",
     "mintAddress": "",
-    "value": "DSwfRF1jhhu6HpSuzaig1G19kzP73PfLZBPLofkw6fLD"
+    "value": "11"
   },
   {
     "collectionSymbol": "famous_fox_federation",
     "name": "Famous Fox Federation",
+    "description": "The Famous Fox Federation, an independent organization of the most fabulously famous foxes on the Blockchain.",
     "image": "https://bafkreihrmpd2qqlnwqsceyp572kkvzet4mzn2ndrnteodwyhgu4m4gnzwq.ipfs.nftstorage.link/",
     "onChainCollectionAddress": "BUjZjAS2vbbb65g7Z1Ca9ZRVYoJscURG5L3AkVvHP9ac",
-    "mintAddress": "BUjZjAS2vbbb65g7Z1Ca9ZRVYoJscURG5L3AkVvHP9ac"
+    "mintAddress": "",
+    "value": "12"
   }
 ]
