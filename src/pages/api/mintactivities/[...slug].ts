@@ -40,7 +40,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
          //console.log(`item.time=${item.time}`)
          let daysfiff = moment(item.time).diff(moment(date_daysago), 'days');
          //console.log(`daysfiff=${daysfiff}`)
-         return daysfiff <= 30
+         return daysfiff <= daysnumber
       });
 
       res.status(200).json(data);
