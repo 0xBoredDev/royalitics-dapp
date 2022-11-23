@@ -38,9 +38,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
       let data = results.data.filter(item => {
          //console.log(`item.time=${item.time}`)
-         let daysfiff = moment(item.time).diff(moment(date_daysago), 'days');
+         let daysdiff = moment(item.time).diff(moment(date_daysago), 'days');
          //console.log(`daysfiff=${daysfiff}`)
-         return daysfiff <= daysnumber
+         return daysdiff <= daysnumber
       });
 
       res.status(200).json(data);
