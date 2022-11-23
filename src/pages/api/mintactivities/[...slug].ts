@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import axios from "axios";
+import moment from "moment"
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {   
    const { slug } = req.query;
@@ -7,10 +8,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(400).json({ message: 'both path parameters update_authority and collection_symbol must be provided' });      
    }
 
+   
    let updateauthority = slug[0] as string;
    let collectionsymbol = slug[1] as string;      
-   console.log(`updateauthority=${updateauthority}`);
-   console.log(`collectionsymbol=${collectionsymbol}`);
+
+   let days = '30';
+   if(slug.length === 3) {
+      days = slug[2] as string;      
+   }
+
+   //console.log(`updateauthority=${updateauthority}`);
+   //console.log(`collectionsymbol=${collectionsymbol}`);
 
    var apikey = '0dec5037-f67d-4da8-9eb6-97e2a09ffe9a';
    var url = `${process.env.CORAL_CUBE_API_BASE}${apikey}/inspector/getMintActivities?update_authority=${updateauthority}&collection_symbol=${collectionsymbol}`;
@@ -23,8 +31,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
    };  
 
    try {
-      const results = await axios(config);
-      res.status(200).json(results.data);
+      let results = await axios(config);
+      var daysnumber: number = +days;
+      let date_daysago = moment().utc().add(-daysnumber, 'days').format(); 
+      console.log(`date_daysago=${date_daysago}`)
+
+      let data = results.data.filter(item => {
+         //console.log(`item.time=${item.time}`)
+         let daysfiff = moment(item.time).diff(moment(date_daysago), 'days');
+         //console.log(`daysfiff=${daysfiff}`)
+         return daysfiff <= 30
+      });
+
+      res.status(200).json(data);
    } catch (error) {
       res.status(500).json(error);
    }
