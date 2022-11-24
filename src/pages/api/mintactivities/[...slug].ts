@@ -16,10 +16,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       days = slug[2] as string;      
    }
 
-   //console.log(`days=${days}`);  
    var apikey = '0dec5037-f67d-4da8-9eb6-97e2a09ffe9a';
    var url = `${process.env.CORAL_CUBE_API_BASE}${apikey}/inspector/getMintActivities?update_authority=${updateauthority}&collection_symbol=${collectionsymbol}`;
-   //console.log(`url=${url}`)
    
    var config = {
       method: 'get',
@@ -31,14 +29,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       let results = await axios(config);
       var daysnumber: number = +days;
       let date_daysago = moment().utc().add(-daysnumber, 'days').format(); 
-      //console.log(`date_daysago=${date_daysago}`)
-
+   
       let data = results.data.filter(item => {
-         //console.log(`item.time=${item.time}`)
          let daysdiff = moment(item.time).diff(moment(date_daysago), 'days');
-         //console.log(`daysdiff=${daysdiff}`)
-         //console.log('-------')
-         return daysdiff > 0
+         return daysdiff >= 0
       });
 
       res.status(200).json(data);
@@ -48,4 +42,3 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 export default handler
-
