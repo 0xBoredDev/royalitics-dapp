@@ -1,24 +1,22 @@
 import { SearchIcon } from "@heroicons/react/outline";
-import { NonceAccount } from "@solana/web3.js";
-import { RoyaltyByMonth } from "components/charts/RoyaltyByMonth";
-import { RoyaltyByUser } from "components/charts/RoyaltyByUser";
-import { TotalByMarketplace } from "components/charts/TotalByMarketplace";
+import {
+  ArcElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
+} from "chart.js";
 import { collections } from "data/collections";
 import { Collection } from "models/collection";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import { Line, Pie } from "react-chartjs-2";
 import SelectSearch from "react-select-search";
-import { Pie, Line } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  ArcElement,
-  Tooltip,
-  Legend,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-} from "chart.js";
+import { getFeeDataPoints } from "utils/converter";
+import { getMintActivities } from "../../queries/queries";
 
 ChartJS.register(
   ArcElement,
@@ -53,28 +51,6 @@ const pieData = {
         "rgb(201, 135, 21)",
       ],
       borderWidth: 1,
-    },
-  ],
-};
-
-const lineData = {
-  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-  datasets: [
-    {
-      label: "My First Dataset",
-      data: [65, 59, 80, 81, 56, 55, 40],
-      fill: false,
-      borderColor: "rgb(75, 192, 192)",
-      tension: 0.1,
-      order: 2,
-    },
-    {
-      label: "My Second Dataset",
-      data: [23, 84, 12, 9, 12, 34, 23],
-      fill: false,
-      borderColor: "rgb(255, 205, 25)",
-      tension: 0.2,
-      order: 1,
     },
   ],
 };
@@ -166,6 +142,48 @@ function renderCollection(props, option, _, className) {
 
 export const AnalyticsView: FC = () => {
   const [collection, setCollection] = useState(new Collection());
+  const [labels, setLabels] = useState([]);
+  const [feeDataPoints, setFeeDataPoints] = useState([]);
+
+  const lineData = {
+    labels: labels,
+    datasets: [
+      {
+        label: "My First Dataset",
+        data: feeDataPoints,
+        fill: false,
+        borderColor: "rgb(75, 192, 192)",
+        tension: 0.1,
+        order: 2,
+      },
+      {
+        label: "My Second Dataset",
+        data: [23, 84, 12, 9, 12, 34, 23],
+        fill: false,
+        borderColor: "rgb(255, 205, 25)",
+        tension: 0.2,
+        order: 1,
+      },
+    ],
+  };
+
+  const setLineData = async () => {
+    const updateauthority = "yootn8Kf22CQczC732psp7qEqxwPGSDQCFZHkzoXp25";
+    const collectionsymbol = "y00ts";
+    const days = 30;
+    const data = await getMintActivities(
+      updateauthority,
+      collectionsymbol,
+      days
+    );
+
+    const { feeDataPoints, labels } = getFeeDataPoints(data, days);
+    setFeeDataPoints(feeDataPoints);
+    setLabels(labels);
+  };
+  useEffect(() => {
+    setLineData();
+  }, []);
 
   return (
     <div className="md:container mx-auto p-4">
@@ -215,6 +233,10 @@ export const AnalyticsView: FC = () => {
             </div>
           </div>
         </div>
+      </section>
+      <section>
+        <button onClick={() => {}}>get data</button>
+        <div>hello</div>
       </section>
       {/* <div className="md:hero-content flex flex-col">
         <RoyaltyByMonth data={dataByMonth} />
