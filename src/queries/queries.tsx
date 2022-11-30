@@ -15,3 +15,8 @@ export const getMintActivities = async (updateauthority: string, collectionsymbo
    const response = await fetch("/api/mintactivities/" + updateauthority + "/" + collectionsymbol + daysquery);
    return response.json();
 }
+
+export const getNfts = async (on_chain_collection_key: string) => {   
+   const response = await fetch("/api/nfts/" + on_chain_collection_key);
+   return response.json();   
+}
