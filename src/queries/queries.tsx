@@ -20,3 +20,8 @@ export const getNfts = async (on_chain_collection_key: string) => {
    const response = await fetch("/api/nfts/" + on_chain_collection_key);
    return response.json();   
 }
+
+export const getTransactions = async (mint_address: string) => {   
+   const response = await fetch("/api/transactions/" + mint_address);
+   return response.json();   
+}
