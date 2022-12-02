@@ -25,3 +25,8 @@ export const getTransactions = async (mint_address: string) => {
    const response = await fetch("/api/transactions/" + mint_address);
    return response.json();   
 }
+
+export const getTransactionDetails = async (tx_id: string) => {   
+   const response = await fetch("/api/transactiondetails/" + tx_id);
+   return response.json();   
+}
