@@ -11,7 +11,10 @@ import {
   Tooltip,
 } from "chart.js";
 import { collections } from "data/collections";
+import { sales } from "data/sales";
 import { Collection } from "models/collection";
+import { Sale } from "models/sale";
+import moment from "moment";
 import { FC, useEffect, useState } from "react";
 import { Line, Pie } from "react-chartjs-2";
 import SelectSearch from "react-select-search";
@@ -117,6 +120,7 @@ function renderValue(valueProps, snapshot, className) {
     </label>
   );
 }
+
 function renderCollection(props, option, _, className) {
   return (
     <div className="flex flex-row">
@@ -144,6 +148,7 @@ export const AnalyticsView: FC = () => {
   const [collection, setCollection] = useState(new Collection());
   const [labels, setLabels] = useState([]);
   const [feeDataPoints, setFeeDataPoints] = useState([]);
+  // console.log(collection.name);
 
   const lineData = {
     labels: labels,
@@ -167,22 +172,57 @@ export const AnalyticsView: FC = () => {
     ],
   };
 
-  const setLineData = async () => {
-    const updateauthority = "yootn8Kf22CQczC732psp7qEqxwPGSDQCFZHkzoXp25";
-    const collectionsymbol = "y00ts";
-    const days = 30;
-    const data = await getMintActivities(
-      updateauthority,
-      collectionsymbol,
-      days
-    );
-
+  const setLineData = async (data, days) => {
     const { feeDataPoints, labels } = getFeeDataPoints(data, days);
     setFeeDataPoints(feeDataPoints);
     setLabels(labels);
   };
+
+  const getCollectionSalesData = async () => {
+    console.log(collection);
+    const updateauthority = "yootn8Kf22CQczC732psp7qEqxwPGSDQCFZHkzoXp25";
+    const collectionsymbol = "y00ts";
+    const before = moment().utc().format().replace("Z", "");
+
+    console.log(moment().utc().format());
+    console.log(encodeURIComponent(moment().utc().format()));
+    // console.log(moment().utc().format());
+    // const days = 30;
+    // const data = await getMintActivities(
+    //   updateauthority,
+    //   collectionsymbol,
+    //   before,
+    //   days
+    // );
+
+    //convert data for chart use.
+    // convertToChartData(data);
+    //TESTING*******
+    convertToChartData(sales);
+
+    // const { feeDataPoints, labels } = getFeeDataPoints(data, days);
+    // setFeeDataPoints(feeDataPoints);
+    // setLabels(labels);
+  };
+
+  function convertToChartData(data: Array<any>) {s
+    //data is being returned
+    console.log(data);
+    let chartData = [];
+    data.forEach((transaction) => {
+      let sale = new Sale(
+
+      );
+    });
+
+    //convert data for chart use.
+    // const { feeDataPoints, labels } = getFeeDataPoints(data, days);
+    // setFeeDataPoints(feeDataPoints);
+    // setLabels(labels);
+  }
+
   useEffect(() => {
-    setLineData();
+    // setLineData();
   }, []);
 
   return (
@@ -196,48 +236,54 @@ export const AnalyticsView: FC = () => {
           renderOption={renderCollection}
           renderValue={renderValue}
           onChange={(value) => {
-            console.log(value);
             setCollection(collections[Number(value)]);
+            getCollectionSalesData();
             value = "";
           }}
           value={collection.name}
         />
       </div>
-      <section className="py-12">
-        <div className="flex flex-row">
-          <div className="basis-1/4">
-            <img
-              alt=""
-              style={imgStyle}
-              width="120"
-              height="120"
-              src={collection.image}
-            />
-          </div>
-          <div className="basis-3/4 p-2">
-            <div className="text-4xl font-bold pb-5">{collection.name}</div>
-            <div className="">{collection.description}</div>
-          </div>
-        </div>
-      </section>
-      <section className="py-12">
-        <div className="grid grid-cols-5 gap-4">
-          <div className="col-span-3">
-            <div className="p-8 ">
-              <Line data={lineData} />
+      {collection.name !== undefined ? (
+        <div>
+          <section className="py-12">
+            <div className="flex flex-row">
+              <div className="basis-1/4">
+                <img
+                  alt=""
+                  style={imgStyle}
+                  width="120"
+                  height="120"
+                  src={collection.image}
+                />
+              </div>
+              <div className="basis-3/4 p-2">
+                <div className="text-4xl font-bold pb-5">{collection.name}</div>
+                <div className="">{collection.description}</div>
+              </div>
             </div>
-          </div>
-          <div className="col-span-2">
-            <div className="p-8 ">
-              <Pie data={pieData} />
+          </section>
+          <section className="py-12">
+            <div className="grid grid-cols-5 gap-4">
+              <div className="col-span-3">
+                <div className="p-8 ">
+                  <Line data={lineData} />
+                </div>
+              </div>
+              <div className="col-span-2">
+                <div className="p-8 ">
+                  <Pie data={pieData} />
+                </div>
+              </div>
             </div>
-          </div>
+          </section>
+          <section>
+            <button onClick={() => {}}>get data</button>
+            <div>hello</div>
+          </section>
         </div>
-      </section>
-      <section>
-        <button onClick={() => {}}>get data</button>
-        <div>hello</div>
-      </section>
+      ) : (
+        <></>
+      )}
       {/* <div className="md:hero-content flex flex-col">
         <RoyaltyByMonth data={dataByMonth} />
         <h2 className="font-bold text-lg">Top payers</h2>
