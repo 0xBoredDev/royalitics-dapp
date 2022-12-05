@@ -53,7 +53,10 @@ export const HomeView: FC = ({}) => {
   }
 
   return (
-    <div className="w-full h-screen overflow-hidden" id="homebg">
+    <div
+      className="w-full h-[calc(100vh-64px-96px)]  overflow-hidden"
+      id="homebg"
+    >
       <div className="md:hero">
         <div className="md:hero-content flex flex-col">
           <img src={logo.src} className="" alt="hero-logo" />
