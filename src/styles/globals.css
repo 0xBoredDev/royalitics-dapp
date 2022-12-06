@@ -24,3 +24,9 @@ a {
   background-color: #707070;
 }
 
+#homebg {
+  background-image: url("../images/home_bg.png");
+  background-repeat: no-repeat;
+  /* object-fit: cover; */
+  background-size: cover;
+}
