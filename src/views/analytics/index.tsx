@@ -20,6 +20,7 @@ import { Line, Pie } from "react-chartjs-2";
 import SelectSearch from "react-select-search";
 import { getFeeDataPoints } from "utils/converter";
 import { getMintActivities } from "../../queries/queries";
+import Table from "./Table";
 
 ChartJS.register(
   ArcElement,
@@ -210,9 +211,7 @@ export const AnalyticsView: FC = () => {
     console.log(data);
     let chartData = [];
     data.forEach((transaction) => {
-      let sale = new Sale(
-
-      );
+      let sale = new Sale();
     });
 
     //convert data for chart use.
@@ -276,9 +275,8 @@ export const AnalyticsView: FC = () => {
               </div>
             </div>
           </section>
-          <section>
-            <button onClick={() => {}}>get data</button>
-            <div>hello</div>
+          <section className="py-12">
+            <Table />
           </section>
         </div>
       ) : (
