@@ -205,7 +205,7 @@ export const AnalyticsView: FC = () => {
     // setLabels(labels);
   };
 
-  function convertToChartData(data: Array<any>) {s
+  function convertToChartData(data: Array<any>) {
     //data is being returned
     console.log(data);
     let chartData = [];
