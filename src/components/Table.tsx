@@ -9,34 +9,55 @@ import {
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-import { makeData, Person } from "./makeData";
-import React from "react";
+import { TransactionRow } from "../utils/makeData";
+import React, { FC } from "react";
+import moment from "moment";
 
-const Table: NextPage = (props) => {
-  const rerender = React.useReducer(() => ({}), {})[1];
+interface TableProps {
+  tableData: TransactionRow[];
+}
 
+const Table: FC<TableProps> = ({ tableData }) => {
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
-  const columns = React.useMemo<ColumnDef<Person>[]>(
+  const columns = React.useMemo<ColumnDef<TransactionRow>[]>(
     () => [
       {
-        accessorKey: "firstName",
-        header: () => <span>First Name</span>,
-        cell: (info) => info.getValue(),
+        accessorKey: "image",
+        header: () => <span></span>,
+        cell: (info) => <img src={String(info.getValue())} />,
         footer: (props) => props.column.id,
       },
       {
-        accessorKey: "lastName",
+        accessorKey: "name",
         cell: (info) => info.getValue(),
-        header: () => <span>Last Name</span>,
+        header: () => <span>Buyer</span>,
+        footer: (props) => props.column.id,
+      },
+      {
+        accessorKey: "buyer",
+        cell: (info) => info.getValue(),
+        header: () => <span>Buyer</span>,
+        footer: (props) => props.column.id,
+      },
+      {
+        accessorKey: "seller",
+        cell: (info) => info.getValue(),
+        header: () => <span>Buyer</span>,
+        footer: (props) => props.column.id,
+      },
+      {
+        accessorKey: "time",
+        cell: (info) => moment(info.getValue(), "YYYYMMDD").fromNow(),
+        header: () => <span>Time</span>,
         footer: (props) => props.column.id,
       },
     ],
     []
   );
 
-  const [data, setData] = React.useState(() => makeData(100000));
-  const refreshData = () => setData(() => makeData(100000));
+  const [data, setData] = React.useState<TransactionRow[]>(tableData);
+  // const refreshData = () => setData(() => makeData(100000));
 
   const table = useReactTable({
     data,
@@ -112,28 +133,28 @@ const Table: NextPage = (props) => {
       <div className="h-2" />
       <div className="flex items-center gap-2">
         <button
-          className="border rounded p-1"
+          className="btn border rounded"
           onClick={() => table.setPageIndex(0)}
           disabled={!table.getCanPreviousPage()}
         >
           {"<<"}
         </button>
         <button
-          className="border rounded p-1"
+          className="btn border rounded"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
           {"<"}
         </button>
         <button
-          className="border rounded p-1"
+          className="btn border rounded"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
           {">"}
         </button>
         <button
-          className="border rounded p-1"
+          className="btn border rounded"
           onClick={() => table.setPageIndex(table.getPageCount() - 1)}
           disabled={!table.getCanNextPage()}
         >
@@ -155,10 +176,11 @@ const Table: NextPage = (props) => {
               const page = e.target.value ? Number(e.target.value) - 1 : 0;
               table.setPageIndex(page);
             }}
-            className="border p-1 rounded w-16"
+            className="input input-bordered w-16 max-w-xs"
           />
         </span>
         <select
+        className="select select-bordered max-w-xs"
           value={table.getState().pagination.pageSize}
           onChange={(e) => {
             table.setPageSize(Number(e.target.value));
@@ -172,12 +194,7 @@ const Table: NextPage = (props) => {
         </select>
       </div>
       <div>{table.getRowModel().rows.length} Rows</div>
-      <div>
-        <button onClick={() => rerender()}>Force Rerender</button>
-      </div>
-      <div>
-        <button onClick={() => refreshData()}>Refresh Data</button>
-      </div>
+
       <pre>{JSON.stringify(sorting, null, 2)}</pre>
     </div>
   );

@@ -20,7 +20,8 @@ import { Line, Pie } from "react-chartjs-2";
 import SelectSearch from "react-select-search";
 import { getFeeDataPoints } from "utils/converter";
 import { getMintActivities } from "../../queries/queries";
-import Table from "./Table";
+import Table from "../../components/Table";
+import { TransactionRow } from "../../utils/makeData";
 
 ChartJS.register(
   ArcElement,
@@ -152,6 +153,7 @@ export const AnalyticsView: FC = () => {
   const [labels, setLabels] = useState([]);
   const [feeDataPoints, setFeeDataPoints] = useState([]);
   // console.log(collection.name);
+  const [tableData, setTableData] = useState([]);
 
   const lineData = {
     labels: labels,
@@ -227,6 +229,22 @@ export const AnalyticsView: FC = () => {
     // setLineData();
   }, []);
 
+  const getTableData = () => {
+    // convert
+    let tableRow: TransactionRow[] = sales.map((sale) => {
+      return {
+        buyer: sale.buyer,
+        seller: sale.seller,
+        image: sale.metadata.uri.replace("json", "png"),
+        name: sale.metadata.name,
+        signature: sale.signature,
+        time: sale.time,
+      };
+    });
+    // set
+    setTableData(tableRow);
+  };
+
   return (
     <div className="md:container mx-auto p-4">
       <div className="flex flex-row justify-center">
@@ -240,6 +258,7 @@ export const AnalyticsView: FC = () => {
           onChange={(value) => {
             setCollection(collections[Number(value)]);
             getCollectionSalesData();
+            getTableData();
             value = "";
           }}
           value={collection.value}
@@ -279,7 +298,7 @@ export const AnalyticsView: FC = () => {
             </div>
           </section>
           <section className="py-12">
-            <Table />
+            <Table tableData={tableData} />
           </section>
         </div>
       ) : (
