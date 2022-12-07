@@ -146,7 +146,9 @@ function renderCollection(props, option, _, className) {
 }
 
 export const AnalyticsView: FC = () => {
-  const [collection, setCollection] = useState(new Collection());
+  const [collection, setCollection] = useState(
+    new Collection("", "", "", "", "", "", "")
+  );
   const [labels, setLabels] = useState([]);
   const [feeDataPoints, setFeeDataPoints] = useState([]);
   // console.log(collection.name);
@@ -211,7 +213,8 @@ export const AnalyticsView: FC = () => {
     console.log(data);
     let chartData = [];
     data.forEach((transaction) => {
-      let sale = new Sale();
+      // let sale = new Sale(
+      // );
     });
 
     //convert data for chart use.
@@ -239,7 +242,7 @@ export const AnalyticsView: FC = () => {
             getCollectionSalesData();
             value = "";
           }}
-          value={collection.name}
+          value={collection.value}
         />
       </div>
       {collection.name !== undefined ? (
