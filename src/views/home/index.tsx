@@ -17,6 +17,7 @@ import useUserSOLBalanceStore from "../../stores/useUserSOLBalanceStore";
 export const HomeView: FC = ({}) => {
   const wallet = useWallet();
   const { connection } = useConnection();
+  const [address, setAddress] = useState("");
 
   const balance = useUserSOLBalanceStore((s) => s.balance);
   const { getUserSOLBalance } = useUserSOLBalanceStore();
@@ -30,7 +31,9 @@ export const HomeView: FC = ({}) => {
 
   useEffect(() => {
     if (wallet.publicKey) {
-      console.log(wallet.publicKey.toBase58());
+      const walletAddress = wallet.publicKey.toBase58();
+      console.log(walletAddress);
+      setAddress(walletAddress);
       getUserSOLBalance(wallet.publicKey, connection);
     }
   }, [wallet.publicKey, connection, getUserSOLBalance]);
@@ -70,6 +73,7 @@ export const HomeView: FC = ({}) => {
             <div className="text-center">
               <RequestAirdrop />
             </div>
+            <div className="text-center">Connected address: {address}</div>
           </div>
           <div className="flex flex-row absolute" style={{ bottom: "130px" }}>
             {collectionItems()}
