@@ -19,9 +19,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   var apikey = "0dec5037-f67d-4da8-9eb6-97e2a09ffe9a";
   var url = `${
     process.env.CORAL_CUBE_API_BASE
-  }${apikey}/inspector/getMintActivities?update_authority=${updateauthority}&collection_symbol=${collectionsymbol}
-  )}`;
-
+  }${apikey}/inspector/getMintActivities?update_authority=${updateauthority}&collection_symbol=${collectionsymbol}`;
+  
   var request = {
     method: "get",
     url: url,
@@ -30,7 +29,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     let results = await axios(request);
-    res.status(200).json(results);
+    res.status(200).json(results.data);
   } catch (error) {
     res.status(500).json(error);
   }
