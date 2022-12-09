@@ -45,3 +45,15 @@ export const getTransactionDetails = async (tx_id: string) => {
   const response = await fetch("/api/transactiondetails/" + tx_id);
   return response.json();
 };
+
+export const getAllSales = async (
+  updateauthority: string,
+  collectionsymbol: string  
+) => {  
+  const response = await fetch(
+    "/api/allsales/" +
+    updateauthority +
+    "/" +
+    collectionsymbol);
+  return response.json();
+};
