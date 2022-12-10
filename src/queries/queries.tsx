@@ -13,20 +13,15 @@ export const getCreator = async (mint_address: string) => {
 export const getMintActivities = async (
   updateauthority: string,
   collectionsymbol: string,
-  before: string,
-  days?: number
+  before: string
 ) => {
-  //   let beforeQuery = before === "" ? "" : "/" + encodeURIComponent(before);
-  console.log(before);
-  let daysQuery = typeof days === "undefined" ? "" : "/" + days;
   const response = await fetch(
     "/api/mintactivities/" +
       updateauthority +
       "/" +
       collectionsymbol +
       "/" +
-      before +
-      daysQuery
+      before
   );
   return response.json();
 };
@@ -48,12 +43,10 @@ export const getTransactionDetails = async (tx_id: string) => {
 
 export const getAllSales = async (
   updateauthority: string,
-  collectionsymbol: string  
-) => {  
+  collectionsymbol: string
+) => {
   const response = await fetch(
-    "/api/allsales/" +
-    updateauthority +
-    "/" +
-    collectionsymbol);
+    "/api/allsales/" + updateauthority + "/" + collectionsymbol
+  );
   return response.json();
 };

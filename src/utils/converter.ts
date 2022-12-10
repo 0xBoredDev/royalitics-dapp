@@ -7,21 +7,20 @@ export const getFeeDataPoints = (data) => {
   let collectedDataPoints = [];
   let uncollectedDataPoints = [];
 
-  let currentDay = parseFloat(moment().format("D"));
+  let firstDay = parseFloat(data[data.length - 1].day);
+  let lastDay = parseFloat(data[0].day);
   let currentMonth = moment().format("MMM");
 
-  for (let i = 1; i <= currentDay; i++) {
+  for (let i = firstDay; i <= lastDay; i++) {
     labels.push(`${currentMonth} ${i}`);
-    temp.push({ d: i, collected: 0, uncollected: 0 });
+    temp.push({ day: i, collected: 0, uncollected: 0 });
   }
 
+  console.log(data);
+
   data.forEach((d) => {
-    let day = d.day;
-    console.log(day);
-    if (day <= temp.length) {
-      temp[day - 1].collected += d.royaltiesCollected;
-      temp[day - 1].uncollected += d.royaltiesUnCollected;
-    }
+    temp.find((i) => i.day == d.day).collected += d.royaltiesCollected;
+    temp.find((i) => i.day == d.day).uncollected += d.royaltiesUnCollected;
   });
 
   temp.forEach((t) => {

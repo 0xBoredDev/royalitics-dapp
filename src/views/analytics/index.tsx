@@ -36,10 +36,10 @@ ChartJS.register(
 );
 
 const pieData = {
-  labels: ["Magic Eden V2", "Other"],
+  labels: ["MagicEden V2", "Other"],
   datasets: [
     {
-      label: "# of Votes",
+      label: "# of Sales",
       data: [80, 20],
       backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)"],
       borderWidth: 1,
@@ -135,13 +135,13 @@ function renderCollection(props, option, _, className) {
 
 export const AnalyticsView: FC = () => {
   const [collection, setCollection] = useState(
-    new Collection("", "", "", "", "", "", "")
+    new Collection("", "", "", "", "", "", "", "")
   );
   const [labels, setLabels] = useState([]);
   // const [feeDataPoints, setFeeDataPoints] = useState([]);
   const [collectedDataPoints, setCollectedDataPoints] = useState([]);
   const [uncollectedDataPoints, setUncollectedDataPoints] = useState([]);
-  const [lineData, setLineData] = useState({ labels: [], datasets: [{}] });
+  const [lineData, setLineData] = useState({ labels: [], datasets: [] });
   // console.log(collection.name);
   const [tableData, setTableData] = useState([]);
   let currentDay = parseFloat(moment().format("D"));
@@ -157,6 +157,9 @@ export const AnalyticsView: FC = () => {
     setLabels(labels);
     setCollectedDataPoints(collectedDataPoints);
     setUncollectedDataPoints(uncollectedDataPoints);
+    console.log(labels);
+    console.log(collectedDataPoints);
+    console.log(uncollectedDataPoints);
     setLineData({
       labels: labels,
       datasets: [
@@ -182,29 +185,26 @@ export const AnalyticsView: FC = () => {
     });
   };
 
-  const getCollectionSalesData = async () => {
+  const getCollectionSalesData = async (collection) => {
     console.log(collection);
-    const updateauthority = "yootn8Kf22CQczC732psp7qEqxwPGSDQCFZHkzoXp25";
-    const collectionsymbol = "y00ts";
+    setCollection(collection);
+    // const updateauthority = "yootn8Kf22CQczC732psp7qEqxwPGSDQCFZHkzoXp25";
+    // const collectionsymbol = "y00ts";
+    const updateauthority = collection.updateAuthority;
+    const collectionsymbol = collection.collectionSymbol;
     const before = moment().utc().format().replace("Z", "");
 
-    console.log(moment().utc().format());
-    console.log(encodeURIComponent(moment().utc().format()));
-    // console.log(moment().utc().format());
-    // const days = 30;
-    // const data = await getMintActivities(
-    //   updateauthority,
-    //   collectionsymbol,
-    //   before,
-    //   days
-    // );
+    const data = await getMintActivities(
+      updateauthority,
+      collectionsymbol,
+      before
+    );
+
+    convertToChartData(data);
 
     /* test data */
-    convertToChartData(sales);
+    // convertToChartData(sales);
     /* end test data */
-
-    //convert data for chart use.
-    // convertToChartData(data);
   };
 
   function convertToDecimal(value) {
@@ -313,7 +313,7 @@ export const AnalyticsView: FC = () => {
       });
     });
     console.log(chartData);
-    // createLineData(chartData);
+    createLineData(chartData);
   }
 
   const getTableData = () => {
@@ -343,8 +343,8 @@ export const AnalyticsView: FC = () => {
           renderOption={renderCollection}
           renderValue={renderValue}
           onChange={(value) => {
-            setCollection(collections[Number(value)]);
-            getCollectionSalesData();
+            // setCollection(collections[Number(value)]);
+            getCollectionSalesData(collections[Number(value)]);
             getTableData();
             value = "";
           }}
@@ -370,11 +370,11 @@ export const AnalyticsView: FC = () => {
               </div>
             </div>
           </section>
-          <div className="flex flex-row px-8 mx-auto justify-center">
+          {/* <div className="flex flex-row px-8 mx-auto justify-center">
             <p className="text-lg">
-              The Data shown below is for Dec 1st-10th 2022
+              The Data shown below is for Dec 7th-10th 2022
             </p>
-          </div>
+          </div> */}
           <section className="py-4">
             <div className="grid grid-cols-5 gap-4">
               <div className="col-span-3">
