@@ -3,6 +3,7 @@ export class Sale {
   month: string;
   year: string;
   timestamp: string;
+  price: number;
   royaltiesCollected: number;
   royaltiesUnCollected: number;
   marketplace: string;
@@ -14,6 +15,7 @@ export class Sale {
     month: string,
     year: string,
     timestamp: string,
+    price: number,
     royaltiesCollected: number,
     royaltiesUnCollected: number,
     marketplace: string,
@@ -25,6 +27,7 @@ export class Sale {
     month = month;
     year = year;
     timestamp = timestamp;
+    price = price;
     royaltiesCollected = royaltiesCollected;
     royaltiesUnCollected = royaltiesUnCollected;
     marketplace = marketplace;

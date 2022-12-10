@@ -1,27 +1,34 @@
 import moment from "moment";
 
-export const getFeeDataPoints = (data, daysnumber) => {
-  let temp = {};
+export const getFeeDataPoints = (data) => {
+  console.log("getFeeDataPoints");
   let labels = [];
+  let temp = [];
+  let collectedDataPoints = [];
+  let uncollectedDataPoints = [];
 
-  data.forEach(function (d) {
-    let date_daysago = moment().utc().add(-daysnumber, "days").format();
-    let daysdiff = moment(d.time).diff(moment(date_daysago), "days");
+  let currentDay = parseFloat(moment().format("D"));
+  let currentMonth = moment().format("MMM");
 
-    if (temp.hasOwnProperty(daysdiff)) {
-      temp[daysdiff] = temp[daysdiff] + d.royalty_fee;
-    } else {
-      temp[daysdiff] = d.royalty_fee;
-      labels.push(d.time.split("T")[0]);
+  for (let i = 1; i <= currentDay; i++) {
+    labels.push(`${currentMonth} ${i}`);
+    temp.push({ d: i, collected: 0, uncollected: 0 });
+  }
+
+  data.forEach((d) => {
+    let day = d.day;
+    console.log(day);
+    if (day <= temp.length) {
+      temp[day - 1].collected += d.royaltiesCollected;
+      temp[day - 1].uncollected += d.royaltiesUnCollected;
     }
   });
 
-  var feeDataPoints = [];
+  temp.forEach((t) => {
+    collectedDataPoints.push(t.collected);
+    uncollectedDataPoints.push(t.uncollected);
+  });
 
-  for (var point in temp) {
-    feeDataPoints.push(temp[point]);
-  }
-
-  console.log(labels, feeDataPoints);
-  return { labels, feeDataPoints };
+  console.log(labels, collectedDataPoints, uncollectedDataPoints);
+  return { labels, collectedDataPoints, uncollectedDataPoints };
 };
