@@ -154,6 +154,7 @@ export const AnalyticsView: FC = () => {
   const createLineData = async (data) => {
     const { labels, collectedDataPoints, uncollectedDataPoints } =
       getFeeDataPoints(data);
+    console.log(`collectedDataPoints=${collectedDataPoints}`)
     setLabels(labels);
     setCollectedDataPoints(collectedDataPoints);
     setUncollectedDataPoints(uncollectedDataPoints);
@@ -282,23 +283,40 @@ export const AnalyticsView: FC = () => {
       // console.log(`paidFullRoyalty = ${paidFullRoyalty}`);
       // console.log(`paidHalfRoyalty = ${paidHalfRoyalty}`);
 
-      // let sale = new Sale(
-      //   day,
-      //   month,
-      //   year,
-      //   timestamp,
-      //   price,
-      //   royaltiesCollected,
-      //   royaltiesUnCollected,
-      //   marketplace,
-      //   paidFullRoyalty,
-      //   paidHalfRoyalty,
-      //   sellerFee
-      // );
+      /* const sale = new Sale(
+         day,
+         month,
+         year,
+         timestamp,
+         price,
+         royaltiesCollected,
+         royaltiesUnCollected,
+         marketplace,
+         paidFullRoyalty,
+         paidHalfRoyalty,
+         sellerFee
+       );
+ */
+       const sale: Sale = {
+         day,
+         month,
+         year,
+         timestamp,
+         price,
+         royaltiesCollected,
+         royaltiesUnCollected,
+         marketplace,
+         paidFullRoyalty,
+         paidHalfRoyalty,
+         sellerFee
+       };
 
-      // chartData.push(sale);
+      //console.log(`sale.day=${sale.day}`);
+      //console.log(`sale.royaltiesCollected=${sale.royaltiesCollected}`);      
 
-      chartData.push({
+      chartData.push(sale);
+
+      /* chartData.push({
         day,
         month,
         year,
@@ -310,10 +328,12 @@ export const AnalyticsView: FC = () => {
         paidFullRoyalty,
         paidHalfRoyalty,
         sellerFee,
-      });
+      }); */
     });
     console.log(chartData);
-    // createLineData(chartData);
+    //console.log("first sale");   
+    //console.log(chartData[0]);      
+    //createLineData(chartData);
   }
 
   const getTableData = () => {
