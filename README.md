@@ -1,17 +1,12 @@
 
-# Solana dApp Scaffold Next
+# Royalitics
 
-The Solana dApp Scaffold repos are meant to house good starting scaffolds for ecosystem developers to get up and running quickly with a front end client UI that integrates several common features found in dApps with some basic usage examples. Wallet Integration. State management. Components examples. Notificaitons. Setup recommendations.
+A smart way to see insights on royalties gained and lost for your NFT collection is to use a specialized tracking tool or platform. This tool can help you keep track of the royalties earned from your NFTs, as well as any royalties lost due to NFTs that have been resold or otherwise transferred. The tool can also provide detailed information and analysis on the performance of your NFT collection, including data on the sales and transfers of individual NFTs, the total value of your collection, and the average royalties earned per NFT. By using a specialized tracking tool, you can gain valuable insights into the performance of your NFT collection and make informed decisions about how to manage and grow your collection.
 
-Responsive                     |  Desktop
-:-------------------------:|:-------------------------:
-![](scaffold-mobile.png)  |  ![](scaffold-desktop.png)
 
-## Getting Started
+# DEMO
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-The responsive version for wallets and wallet adapter may not function or work as expected for mobile based on plugin and walelt compatibility.
+https://smart-royalitics-smartroyalitics.vercel.app/
 
 ## Installation
 
@@ -41,27 +36,13 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 ## Features
 
-Each Scaffold will contain at least the following features:
-
-```
-Wallet Integration with Auto Connec / Refresh
-
-State Management
-
-Components: One or more components demonstrating state management
-
-Web3 Js: Examples of one or more uses of web3 js including a transaction with a connection provider
-
-Sample navigation and page changing to demonstate state
-
-Clean Simple Styling 
-
-Notifications (optional): Example of using a notification system
-
-```
-
-A Solana Components Repo will be released in the near future to house a common components library.
-
+-Specialized tracking tool or platform
+-Tracks royalties earned from NFTs
+-Tracks royalties lost due to NFT resales or transfers
+-Provides detailed information and analysis on NFT collection performance
+-Includes data on sales and transfers of individual NFTs
+-Includes total value of collection and average royalties earned per NFT
+-Helps user make informed decisions about managing and growing collection.
 
 ### Structure
 
@@ -109,16 +90,6 @@ pull request!
 
 You can find tasks on the [project board](https://github.com/solana-dev-adv/solana-dapp-next/projects/1) 
 or create an issue and assign it to yourself.
-
-
-## Learn More Next Js
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 

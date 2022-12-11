@@ -417,7 +417,7 @@ export const AnalyticsView: FC = () => {
           </div>
           {loading === false && (
             <section className="py-4">
-              <div className="grid grid-cols-5 gap-4">
+              <div className="grid grid-cols-3 gap-4 md:grid-cols-5">
                 <div className="col-span-3">
                   <div className="p-8 ">
                     <Line data={lineData} />
