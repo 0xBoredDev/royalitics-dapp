@@ -180,7 +180,7 @@ const Table: FC<TableProps> = ({ tableData }) => {
           />
         </span>
         <select
-        className="select select-bordered max-w-xs"
+          className="select select-bordered max-w-xs"
           value={table.getState().pagination.pageSize}
           onChange={(e) => {
             table.setPageSize(Number(e.target.value));
@@ -195,7 +195,7 @@ const Table: FC<TableProps> = ({ tableData }) => {
       </div>
       <div>{table.getRowModel().rows.length} Rows</div>
 
-      <pre>{JSON.stringify(sorting, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(sorting, null, 2)}</pre> */}
     </div>
   );
 };

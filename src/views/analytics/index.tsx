@@ -23,7 +23,7 @@ import { getFeeDataPoints } from "utils/converter";
 import { getMintActivities } from "../../queries/queries";
 import Table from "../../components/Table";
 import { TransactionRow } from "../../utils/makeData";
-import { Audio } from  'react-loader-spinner'
+import { Dna } from "react-loader-spinner";
 //import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 ChartJS.register(
@@ -199,19 +199,22 @@ export const AnalyticsView: FC = () => {
     const collectionsymbol = collection.collectionSymbol;
     const before = moment().utc().format().replace("Z", "");
 
-    const data = await getMintActivities(
-      updateauthority,
-      collectionsymbol,
-      before
-    );
+    // const data = await getMintActivities(
+    //   updateauthority,
+    //   collectionsymbol,
+    //   before
+    // );
 
-    setLoading(false);
-    if (data.status === 200) {      
-      convertToChartData(data);
-    }
+    // setLoading(false);
+    // if (data.status === 200) {
+    //   convertToChartData(data);
+    // }
 
     /* test data */
-    // convertToChartData(sales);
+    setTimeout(() => {
+      convertToChartData(sales);
+      setLoading(false);
+    }, 4000);
     /* end test data */
   };
 
@@ -318,10 +321,10 @@ export const AnalyticsView: FC = () => {
         sellerFee,
       };
 
+      chartData.push(sale);
+
       //console.log(`sale.day=${sale.day}`);
       //console.log(`sale.royaltiesCollected=${sale.royaltiesCollected}`);
-
-      chartData.push(sale);
 
       /* chartData.push({
         day,
@@ -381,7 +384,7 @@ export const AnalyticsView: FC = () => {
         <div>
           <section className="py-8">
             <div className="flex flex-row">
-              <div className="basis-1/4">
+              <div className="basis-1/4 flex justify-center">
                 <img
                   alt=""
                   style={imgStyle}
@@ -401,20 +404,18 @@ export const AnalyticsView: FC = () => {
               The Data shown below is for Dec 7th-10th 2022
             </p>
           </div> */}
-          <div>
+          <div className="flex flex-row px-8 mx-auto justify-center">
             {loading === true && (
-              <Audio
-                height = "80"
-                width = "80"
-                radius = "9"
-                color = 'green'
-                ariaLabel = 'three-dots-loading'
-                wrapperStyle
-                wrapperClass
-              />            
+              <Dna
+                height="120"
+                width="120"
+                ariaLabel="dna-loading"
+                wrapperStyle={{}}
+                wrapperClass="dna-wrapper"
+              />
             )}
-          </div>          
-            {loading === false && (
+          </div>
+          {loading === false && (
             <section className="py-4">
               <div className="grid grid-cols-5 gap-4">
                 <div className="col-span-3">
@@ -429,12 +430,12 @@ export const AnalyticsView: FC = () => {
                 </div>
               </div>
             </section>
-            )}
-            {loading === false && (
+          )}
+          {loading === false && (
             <section className="py-4">
               <Table tableData={tableData} />
             </section>
-            )}
+          )}
         </div>
       ) : (
         <></>

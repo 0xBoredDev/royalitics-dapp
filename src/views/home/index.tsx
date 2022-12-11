@@ -3,6 +3,7 @@ import { FC, useEffect, useState } from "react";
 import Link from "next/link";
 import logo from "../../../public/logo.png";
 import { collections } from "data/collections";
+import { gsap } from "gsap";
 
 // Wallet
 import { useWallet, useConnection } from "@solana/wallet-adapter-react";
@@ -29,6 +30,19 @@ export const HomeView: FC = ({}) => {
   };
 
   useEffect(() => {
+    gsap.from(".collab-item", {
+      duration: 1,
+      y: 100,
+      stagger: {
+        from: "center",
+        each: 0.1,
+        yoyo: true,
+        repeat: -1,
+      },
+    });
+  }, []);
+
+  useEffect(() => {
     if (wallet.publicKey) {
       const walletAddress = wallet.publicKey.toBase58();
       console.log(walletAddress);
@@ -42,10 +56,10 @@ export const HomeView: FC = ({}) => {
       <div className="" key={item.value}>
         <img
           src={item.image}
-          className=""
+          className="collab-item"
           style={imgStyle}
-          width="60"
-          height="60"
+          width="80"
+          height="80"
           alt="..."
         />
       </div>
@@ -74,7 +88,10 @@ export const HomeView: FC = ({}) => {
             </div>
             <div className="text-center">Connected address: {address}</div>
           </div>
-          <div className="flex flex-row absolute" style={{ bottom: "130px" }}>
+          <div
+            className="flex flex-row absolute space-x-2 overflow-hidden h-48"
+            style={{ bottom: "110px" }}
+          >
             {collectionItems()}
           </div>
         </div>
