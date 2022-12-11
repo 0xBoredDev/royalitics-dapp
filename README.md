@@ -6,6 +6,9 @@ A smart way to see insights on royalties gained and lost for your NFT collection
 
 # DEMO
 
+![HERO](https://user-images.githubusercontent.com/36173828/206932443-07613796-4649-406a-aa04-050e6f789244.png)
+
+
 https://smart-royalitics-smartroyalitics.vercel.app/
 
 ## Installation
