@@ -11,7 +11,7 @@ export const RequestAirdrop: FC = () => {
 
   const onClick = useCallback(async () => {
     if (!publicKey) {
-      console.log("error", "Wallet not connected!");
+      //console.log("error", "Wallet not connected!");
       notify({
         type: "error",
         message: "error",
@@ -39,7 +39,7 @@ export const RequestAirdrop: FC = () => {
         description: error?.message,
         txid: signature,
       });
-      console.log("error", `Airdrop failed! ${error?.message}`, signature);
+      //console.log("error", `Airdrop failed! ${error?.message}`, signature);
     }
   }, [publicKey, connection, getUserSOLBalance]);
 

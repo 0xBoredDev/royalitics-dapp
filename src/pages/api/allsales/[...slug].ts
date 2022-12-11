@@ -3,7 +3,7 @@ import axios from "axios";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { slug } = req.query;
-  console.log(slug);
+  //console.log(slug);
   if (!slug || slug.length !== 2) {
     res
       .status(400)

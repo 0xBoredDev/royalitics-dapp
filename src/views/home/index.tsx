@@ -45,7 +45,7 @@ export const HomeView: FC = ({}) => {
   useEffect(() => {
     if (wallet.publicKey) {
       const walletAddress = wallet.publicKey.toBase58();
-      console.log(walletAddress);
+      //console.log(walletAddress);
       setAddress(walletAddress);
       getUserSOLBalance(wallet.publicKey, connection);
     }

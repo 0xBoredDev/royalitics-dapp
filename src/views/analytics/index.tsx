@@ -162,9 +162,9 @@ export const AnalyticsView: FC = () => {
     setLabels(labels);
     setCollectedDataPoints(collectedDataPoints);
     setUncollectedDataPoints(uncollectedDataPoints);
-    console.log(labels);
-    console.log(collectedDataPoints);
-    console.log(uncollectedDataPoints);
+    //console.log(labels);
+    //console.log(collectedDataPoints);
+    //console.log(uncollectedDataPoints);
     setLineData({
       labels: labels,
       datasets: [
@@ -232,7 +232,7 @@ export const AnalyticsView: FC = () => {
 
   function convertToChartData(data: Array<any>) {
     //data is being returned
-    console.log(data);
+    //console.log(data);
     let chartData = [];
 
     /* test */
