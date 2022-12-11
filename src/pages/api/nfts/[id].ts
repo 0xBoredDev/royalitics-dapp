@@ -21,7 +21,7 @@ export default function handler(
       res.status(200).json(response.data); 
    })
    .catch(function (error) {
-      console.log(error.message);
+      //console.log(error.message);
       res.status(500).json({ message: error.message });
    });
 }
