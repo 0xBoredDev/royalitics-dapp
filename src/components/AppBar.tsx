@@ -1,6 +1,7 @@
 import { FC } from "react";
 import Link from "next/link";
 import logo_full from "../../public/logo_full.png";
+import logo from "../../public/logo.png";
 
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { useAutoConnect } from "../contexts/AutoConnectProvider";
@@ -29,8 +30,8 @@ export const AppBar: FC = (props) => {
             </svg>
           </label>
 
-          <div className="hidden sm:inline w-22 h-22 md:p-0">
-            <img src={logo_full.src} height="40px" className="h-10" />
+          <div className="hidden sm:inline w-22 h-22 pl-4">
+            <img src={logo.src} height="40px" className="h-10" />
           </div>
         </div>
 

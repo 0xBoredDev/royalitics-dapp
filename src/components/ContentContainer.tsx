@@ -5,23 +5,28 @@ export const ContentContainer: FC = (props) => {
     <div className="flex-1 drawer h-52">
       {/* <div className="h-screen drawer drawer-mobile w-full"> */}
       <input id="my-drawer" type="checkbox" className="grow drawer-toggle" />
-      <div className="items-center  drawer-content">{props.children}</div>
+      <div className="items-center drawer-content">{props.children}</div>
 
       {/* SideBar / Drawer */}
       <div className="drawer-side">
         <label htmlFor="my-drawer" className="drawer-overlay"></label>
         <ul className="p-4 overflow-y-auto menu w-80 bg-base-100">
           <li>
-            <h1>Menu</h1>
+            <h1 className="text-3xl font-bold">Menu</h1>
           </li>
           <li>
             <Link href="/">
-              <a>Home</a>
+              <a className="text-xl font-600">Home</a>
             </Link>
           </li>
           <li>
             <Link href="/analytics">
-              <a>Analytics</a>
+              <a className="text-xl font-600">Analytics</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/team">
+              <a className="text-xl font-600">Team</a>
             </Link>
           </li>
         </ul>

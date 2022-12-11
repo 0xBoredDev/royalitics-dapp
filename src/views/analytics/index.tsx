@@ -10,6 +10,7 @@ import {
   Title,
   Tooltip,
 } from "chart.js";
+import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { collections } from "data/collections";
 import { sales } from "data/sales";
 import { Collection } from "models/collection";
@@ -20,6 +21,10 @@ import { Line, Pie } from "react-chartjs-2";
 import SelectSearch from "react-select-search";
 import { getFeeDataPoints } from "utils/converter";
 import { getMintActivities } from "../../queries/queries";
+import Table from "../../components/Table";
+import { TransactionRow } from "../../utils/makeData";
+import { Dna } from "react-loader-spinner";
+//import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 ChartJS.register(
   ArcElement,
@@ -33,26 +38,12 @@ ChartJS.register(
 );
 
 const pieData = {
-  labels: [
-    "8kQayFPyKcJCdJYs8FTSTP3yNsTeKcAewegewTY7UVp1",
-    "8kQayFPyKcJCdJYs8FTSTP3yNsTeKcAewegewTY7UVp2",
-    "8kQayFPyKcJCdJYs8FTSTP3yNsTeKcAewegewTY7UVp3",
-    "8kQayFPyKcJCdJYs8FTSTP3yNsTeKcAewegewTY7UVp4",
-    "8kQayFPyKcJCdJYs8FTSTP3yNsTeKcAewegewTY7UVp5",
-    "8kQayFPyKcJCdJYs8FTSTP3yNsTeKcAewegewTY7UVp6",
-  ],
+  labels: ["MagicEden V2", "Other"],
   datasets: [
     {
-      label: "# of Votes",
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: [
-        "rgb(255, 99, 132)",
-        "rgb(54, 162, 235)",
-        "rgb(255, 205, 86)",
-        "rgb(21, 201, 25)",
-        "rgb(174, 21, 201)",
-        "rgb(201, 135, 21)",
-      ],
+      label: "# of Sales",
+      data: [80, 20],
+      backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)"],
       borderWidth: 1,
     },
   ],
@@ -146,85 +137,228 @@ function renderCollection(props, option, _, className) {
 
 export const AnalyticsView: FC = () => {
   const [collection, setCollection] = useState(
-    new Collection("", "", "", "", "", "", "")
+    new Collection("", "", "", "", "", "", "", "")
   );
   const [labels, setLabels] = useState([]);
-  const [feeDataPoints, setFeeDataPoints] = useState([]);
+  // const [feeDataPoints, setFeeDataPoints] = useState([]);
+  const [collectedDataPoints, setCollectedDataPoints] = useState([]);
+  const [uncollectedDataPoints, setUncollectedDataPoints] = useState([]);
+  const [lineData, setLineData] = useState({ labels: [], datasets: [] });
   // console.log(collection.name);
+  const [tableData, setTableData] = useState([]);
+  let [loading, setLoading] = useState(false);
 
-  const lineData = {
-    labels: labels,
-    datasets: [
-      {
-        label: "My First Dataset",
-        data: feeDataPoints,
-        fill: false,
-        borderColor: "rgb(75, 192, 192)",
-        tension: 0.1,
-        order: 2,
-      },
-      {
-        label: "My Second Dataset",
-        data: [23, 84, 12, 9, 12, 34, 23],
-        fill: false,
-        borderColor: "rgb(255, 205, 25)",
-        tension: 0.2,
-        order: 1,
-      },
-    ],
-  };
+  let currentDay = parseFloat(moment().format("D"));
+  let currentMonth = moment().format("MMM");
+  let bottomLabels = [];
+  for (let i = 1; i <= currentDay; i++) {
+    bottomLabels.push(`${currentMonth} ${i}`);
+  }
 
-  const setLineData = async (data, days) => {
-    const { feeDataPoints, labels } = getFeeDataPoints(data, days);
-    setFeeDataPoints(feeDataPoints);
+  const createLineData = async (data) => {
+    const { labels, collectedDataPoints, uncollectedDataPoints } =
+      getFeeDataPoints(data);
+    //console.log(`collectedDataPoints=${collectedDataPoints}`);
     setLabels(labels);
+    setCollectedDataPoints(collectedDataPoints);
+    setUncollectedDataPoints(uncollectedDataPoints);
+    //console.log(labels);
+    //console.log(collectedDataPoints);
+    //console.log(uncollectedDataPoints);
+    setLineData({
+      labels: labels,
+      datasets: [
+        {
+          label: "Royalties Collected",
+          data: collectedDataPoints,
+          // data: [23, 84, 12, 9, 12, 34, 23, 43, 44, 88],
+          fill: false,
+          borderColor: "rgb(75, 192, 192)",
+          tension: 0.1,
+          order: 1,
+        },
+        {
+          label: "Royalties UnCollected",
+          data: uncollectedDataPoints,
+          // data: [13, 74, 10, 5, 10, 24, 13, 33, 34, 48],
+          fill: false,
+          borderColor: "rgb(255, 205, 25)",
+          tension: 0.2,
+          order: 2,
+        },
+      ],
+    });
   };
 
-  const getCollectionSalesData = async () => {
-    console.log(collection);
-    const updateauthority = "yootn8Kf22CQczC732psp7qEqxwPGSDQCFZHkzoXp25";
-    const collectionsymbol = "y00ts";
+  const getCollectionSalesData = async (collection) => {
+    //console.log(collection);
+    setCollection(collection);
+    // const updateauthority = "yootn8Kf22CQczC732psp7qEqxwPGSDQCFZHkzoXp25";
+    // const collectionsymbol = "y00ts";
+    const updateauthority = collection.updateAuthority;
+    const collectionsymbol = collection.collectionSymbol;
     const before = moment().utc().format().replace("Z", "");
 
-    console.log(moment().utc().format());
-    console.log(encodeURIComponent(moment().utc().format()));
-    // console.log(moment().utc().format());
-    // const days = 30;
     // const data = await getMintActivities(
     //   updateauthority,
     //   collectionsymbol,
-    //   before,
-    //   days
+    //   before
     // );
 
-    //convert data for chart use.
-    // convertToChartData(data);
-    //TESTING*******
-    convertToChartData(sales);
+    // setLoading(false);
+    // if (data.status === 200) {
+    //   convertToChartData(data);
+    // }
 
-    // const { feeDataPoints, labels } = getFeeDataPoints(data, days);
-    // setFeeDataPoints(feeDataPoints);
-    // setLabels(labels);
+    /* test data */
+    setTimeout(() => {
+      convertToChartData(sales);
+      setLoading(false);
+    }, 4000);
+    /* end test data */
   };
+
+  function convertToDecimal(value) {
+    let fixed = (value / 100).toFixed(2);
+    let newVal = parseFloat(fixed);
+    return newVal;
+  }
+
+  function formatDecimal(value) {
+    let fixed = value.toFixed(2);
+    let newVal = parseFloat(fixed);
+    return newVal;
+  }
 
   function convertToChartData(data: Array<any>) {
     //data is being returned
-    console.log(data);
+    //console.log(data);
     let chartData = [];
-    data.forEach((transaction) => {
-      // let sale = new Sale(
-      // );
-    });
 
-    //convert data for chart use.
-    // const { feeDataPoints, labels } = getFeeDataPoints(data, days);
-    // setFeeDataPoints(feeDataPoints);
-    // setLabels(labels);
+    /* test */
+    /*233 has half royalty fee */
+    // let trans = data[233];
+    // let transTime = moment(trans.time);
+    // console.log(transTime);
+    // console.log(transTime.format("D"));
+    // console.log(transTime.format("M"));
+    // console.log(transTime.format("Y"));
+
+    // let day = transTime.format("D");
+    // let month = transTime.format("M");
+    // let year = transTime.format("Y");
+    // let timestamp = trans.time;
+    // let price = trans.price / LAMPORTS_PER_SOL;
+    // console.log(`price = ${price}`);
+    // let royaltiesCollected = trans.royalty_fee / LAMPORTS_PER_SOL;
+    // console.log(`royaltiesCollected = ${royaltiesCollected}`);
+    // let sellerFee = convertToDecimal(trans.metadata.seller_fee_basis_points);
+    // console.log(`sellerFee = ${sellerFee}`);
+    // let estimatedRoyaltyFee = price * (sellerFee / 100);
+    // console.log(`estimatedRoyaltyFee = ${estimatedRoyaltyFee}`);
+    // let royaltiesUnCollected = formatDecimal(
+    //   estimatedRoyaltyFee - royaltiesCollected
+    // );
+    // console.log(`royaltiesUnCollected = ${royaltiesUnCollected}`);
+    // let marketplace = trans.marketplace;
+    // let paidFullRoyalty = royaltiesCollected === estimatedRoyaltyFee;
+    // console.log(`paidFullRoyalty = ${paidFullRoyalty}`);
+    // let paidHalfRoyalty = estimatedRoyaltyFee / 2 === royaltiesCollected;
+    // console.log(`paidHalfRoyalty = ${paidHalfRoyalty}`);
+
+    /* end test*/
+
+    data.forEach((trans) => {
+      let transTime = moment(trans.time);
+      let day = transTime.format("D");
+      let month = transTime.format("M");
+      let year = transTime.format("Y");
+      let timestamp = trans.time;
+      let price = trans.price / LAMPORTS_PER_SOL;
+      let sellerFee = convertToDecimal(trans.metadata.seller_fee_basis_points);
+      let estimatedRoyaltyFee = price * (sellerFee / 100);
+      let royaltiesCollected = trans.royalty_fee / LAMPORTS_PER_SOL;
+      let royaltiesUnCollected = formatDecimal(
+        estimatedRoyaltyFee - royaltiesCollected
+      );
+      let marketplace = trans.marketplace;
+      let paidFullRoyalty = royaltiesCollected === estimatedRoyaltyFee;
+      let paidHalfRoyalty = estimatedRoyaltyFee / 2 === royaltiesCollected;
+
+      // console.log(`price = ${price}`);
+      // console.log(`royaltiesCollected = ${royaltiesCollected}`);
+      // console.log(`sellerFee = ${sellerFee}`);
+      // console.log(`estimatedRoyaltyFee = ${estimatedRoyaltyFee}`);
+      // console.log(`royaltiesUnCollected = ${royaltiesUnCollected}`);
+      // console.log(`paidFullRoyalty = ${paidFullRoyalty}`);
+      // console.log(`paidHalfRoyalty = ${paidHalfRoyalty}`);
+
+      /* const sale = new Sale(
+         day,
+         month,
+         year,
+         timestamp,
+         price,
+         royaltiesCollected,
+         royaltiesUnCollected,
+         marketplace,
+         paidFullRoyalty,
+         paidHalfRoyalty,
+         sellerFee
+       );
+ */
+      const sale: Sale = {
+        day,
+        month,
+        year,
+        timestamp,
+        price,
+        royaltiesCollected,
+        royaltiesUnCollected,
+        marketplace,
+        paidFullRoyalty,
+        paidHalfRoyalty,
+        sellerFee,
+      };
+
+      chartData.push(sale);
+
+      //console.log(`sale.day=${sale.day}`);
+      //console.log(`sale.royaltiesCollected=${sale.royaltiesCollected}`);
+
+      /* chartData.push({
+        day,
+        month,
+        year,
+        timestamp,
+        price,
+        royaltiesCollected,
+        royaltiesUnCollected,
+        marketplace,
+        paidFullRoyalty,
+        paidHalfRoyalty,
+        sellerFee,
+      }); */
+    });
+    //console.log(chartData);
+    createLineData(chartData);
   }
 
-  useEffect(() => {
-    // setLineData();
-  }, []);
+  const getTableData = () => {
+    // convert
+    let tableRow: TransactionRow[] = sales.map((sale) => {
+      return {
+        buyer: sale.buyer,
+        seller: sale.seller,
+        image: sale.metadata.uri.replace("json", "png"),
+        name: sale.metadata.name,
+        signature: sale.signature,
+        time: sale.time,
+      };
+    });
+    // set
+    setTableData(tableRow);
+  };
 
   return (
     <div className="md:container mx-auto p-4">
@@ -237,8 +371,10 @@ export const AnalyticsView: FC = () => {
           renderOption={renderCollection}
           renderValue={renderValue}
           onChange={(value) => {
-            setCollection(collections[Number(value)]);
-            getCollectionSalesData();
+            // setCollection(collections[Number(value)]);
+            setLoading(true);
+            getCollectionSalesData(collections[Number(value)]);
+            getTableData();
             value = "";
           }}
           value={collection.value}
@@ -246,9 +382,9 @@ export const AnalyticsView: FC = () => {
       </div>
       {collection.name !== undefined ? (
         <div>
-          <section className="py-12">
+          <section className="py-8">
             <div className="flex flex-row">
-              <div className="basis-1/4">
+              <div className="basis-1/4 flex justify-center">
                 <img
                   alt=""
                   style={imgStyle}
@@ -263,24 +399,43 @@ export const AnalyticsView: FC = () => {
               </div>
             </div>
           </section>
-          <section className="py-12">
-            <div className="grid grid-cols-5 gap-4">
-              <div className="col-span-3">
-                <div className="p-8 ">
-                  <Line data={lineData} />
+          {/* <div className="flex flex-row px-8 mx-auto justify-center">
+            <p className="text-lg">
+              The Data shown below is for Dec 7th-10th 2022
+            </p>
+          </div> */}
+          <div className="flex flex-row px-8 mx-auto justify-center">
+            {loading === true && (
+              <Dna
+                height="120"
+                width="120"
+                ariaLabel="dna-loading"
+                wrapperStyle={{}}
+                wrapperClass="dna-wrapper"
+              />
+            )}
+          </div>
+          {loading === false && (
+            <section className="py-4">
+              <div className="grid grid-cols-5 gap-4">
+                <div className="col-span-3">
+                  <div className="p-8 ">
+                    <Line data={lineData} />
+                  </div>
+                </div>
+                <div className="col-span-2">
+                  <div className="p-8 ">
+                    <Pie data={pieData} />
+                  </div>
                 </div>
               </div>
-              <div className="col-span-2">
-                <div className="p-8 ">
-                  <Pie data={pieData} />
-                </div>
-              </div>
-            </div>
-          </section>
-          <section>
-            <button onClick={() => {}}>get data</button>
-            <div>hello</div>
-          </section>
+            </section>
+          )}
+          {loading === false && (
+            <section className="py-4">
+              <Table tableData={tableData} />
+            </section>
+          )}
         </div>
       ) : (
         <></>

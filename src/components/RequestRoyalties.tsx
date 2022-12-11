@@ -4,14 +4,14 @@ import { FC, useCallback } from "react";
 import { notify } from "../utils/notifications";
 import useUserSOLBalanceStore from "../stores/useUserSOLBalanceStore";
 
-export const RequestAirdrop: FC = () => {
+export const RequestRoyalties: FC = () => {
   const { connection } = useConnection();
   const { publicKey } = useWallet();
   const { getUserSOLBalance } = useUserSOLBalanceStore();
 
   const onClick = useCallback(async () => {
     if (!publicKey) {
-      //console.log("error", "Wallet not connected!");
+      console.log("error", "Wallet not connected!");
       notify({
         type: "error",
         message: "error",
@@ -39,7 +39,7 @@ export const RequestAirdrop: FC = () => {
         description: error?.message,
         txid: signature,
       });
-      //console.log("error", `Airdrop failed! ${error?.message}`, signature);
+      console.log("error", `Airdrop failed! ${error?.message}`, signature);
     }
   }, [publicKey, connection, getUserSOLBalance]);
 

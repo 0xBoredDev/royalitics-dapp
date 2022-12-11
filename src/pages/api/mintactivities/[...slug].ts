@@ -4,14 +4,12 @@ import moment from "moment";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { slug } = req.query;
-  console.log(slug);
+  //console.log(slug);
   if (!slug || slug.length < 3) {
-    res
-      .status(400)
-      .json({
-        message:
-          "both path parameters update_authority and collection_symbol must be provided",
-      });
+    res.status(400).json({
+      message:
+        "both path parameters update_authority and collection_symbol must be provided",
+    });
   }
 
   let updateauthority = slug[0] as string;
@@ -33,7 +31,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   var request = {
     method: "get",
     url: url,
-    headers: { Accept: "application/json" },
+    //headers: { Accept: "application/json" },
   };
 
   try {

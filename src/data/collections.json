@@ -6,7 +6,8 @@
     "image": "https://bafkreidc5co72clgqor54gpugde6tr4otrubjfqanj4vx4ivjwxnhqgaai.ipfs.nftstorage.link/",
     "onChainCollectionAddress": "4mKSoDDqApmF1DqXvVTSL6tu2zixrSSNjqMxUnwvVzy2",
     "mintAddress": "",
-    "value": "0"
+    "value": "0",
+    "updateAuthority": "yootn8Kf22CQczC732psp7qEqxwPGSDQCFZHkzoXp25"
   },
   {
     "collectionSymbol": "t00bs",
@@ -16,7 +17,8 @@
     "sellerFeeBasisPoints": 0,
     "onChainCollectionAddress": "",
     "mintAddress": "9P1pVkfGErLKY8bEC5smKytBoAFujpoUdCo8LnQGeg3M",
-    "value": "1"
+    "value": "1",
+    "updateAuthority": ""
   },
   {
     "collectionSymbol": "degods",
@@ -26,7 +28,8 @@
     "sellerFeeBasisPoints": 0,
     "onChainCollectionAddress": "6XxjKYFbcndh2gDcsUrmZgVEsoDxXMnfsaGY6fpTJzNr",
     "mintAddress": "",
-    "value": "2"
+    "value": "2",
+    "updateAuthority": "AxFuniPo7RaDgPH6Gizf4GZmLQFc4M5ipckeeZfkrPNn"
   },
   {
     "collectionSymbol": "blocksmith_labs",
@@ -36,7 +39,8 @@
     "sellerFeeBasisPoints": 0,
     "onChainCollectionAddress": "",
     "mintAddress": "AdShyNDStR1RGaMNhnRoSxXZLMdJwjZwjDPDJRmHrt4m",
-    "value": "3"
+    "value": "3",
+    "updateAuthority": ""
   },
   {
     "collectionSymbol": "okay_bears",
@@ -45,7 +49,8 @@
     "image": "https://bafkreidgfsdjx4nt4vctch73hcchb3pkiwic2onfw5yr4756adchogk5de.ipfs.nftstorage.link/",
     "onChainCollectionAddress": "3saAedkM9o5g1u5DCqsuMZuC4GRqPB4TuMkvSsSVvGQ3",
     "mintAddress": "",
-    "value": "4"
+    "value": "4",
+    "updateAuthority": ""
   },
   {
     "collectionSymbol": "abc_abracadabra",
@@ -54,7 +59,8 @@
     "image": "https://bafybeie4f7n526mxpp2jgixpc4e7b7vpkae4sglks37lzj7tiwghxyvel4.ipfs.nftstorage.link/",
     "onChainCollectionAddress": "ES2iF5ctjqvtopPn4n6K7c9fdHjYg41rYXL2XzJK37jF",
     "mintAddress": "",
-    "value": "5"
+    "value": "5",
+    "updateAuthority": ""
   },
   {
     "collectionSymbol": "meta_tattoo_club",
@@ -63,7 +69,8 @@
     "image": "https://bafybeih3wfmqhia27ah4n5q36h3daqqac4zmn4zkys5mhoasb3tm6yjxsa.ipfs.nftstorage.link/",
     "onChainCollectionAddress": "",
     "mintAddress": "FCfTu3mQwjqcFRd56B9nmzF2wqmdrbHnUGtaSvaFN6up",
-    "value": "6"
+    "value": "6",
+    "updateAuthority": ""
   },
   {
     "collectionSymbol": "taiyo_robotics",
@@ -72,7 +79,8 @@
     "image": "https://dl.airtable.com/.attachmentThumbnails/72a25e9d4d6f89582ebddb4e17aad0e6/bd10fa1b",
     "onChainCollectionAddress": "",
     "mintAddress": "5yS3XtPua4Sc7TJu5xnujeaqJNioXMNuY9gUzxFnWKKY",
-    "value": "7"
+    "value": "7",
+    "updateAuthority": ""
   },
   {
     "collectionSymbol": "vandal_city",
@@ -81,7 +89,8 @@
     "image": "https://img-cdn.magiceden.dev/rs:fill:400:400:0:0/plain/https://cdn.discordapp.com/attachments/975048153843777577/1005302647491928124/unknown.png",
     "onChainCollectionAddress": "",
     "mintAddress": "Fda88Vre4buSDgKik5XtXo6b93LZZBbApqdZWrZypggQ",
-    "value": "8"
+    "value": "8",
+    "updateAuthority": ""
   },
   {
     "collectionSymbol": "solana_monkey_business",
@@ -90,7 +99,8 @@
     "image": "https://i.imgur.com/bMH6qNc.png",
     "onChainCollectionAddress": "SMBH3wF6baUj6JWtzYvqcKuj2XCKWDqQxzspY12xPND",
     "mintAddress": "",
-    "value": "9"
+    "value": "9",
+    "updateAuthority": ""
   },
   {
     "collectionSymbol": "cets_on_creck",
@@ -99,7 +109,8 @@
     "image": "https://creator-hub-prod.s3.us-east-2.amazonaws.com/cats_on_crack_pfp_1644850873089.png",
     "onChainCollectionAddress": "",
     "mintAddress": "4Kcwv9Me1GeqcTrpncEXhSSU2eWnFusdjE1rXS2qfrxi",
-    "value": "10"
+    "value": "10",
+    "updateAuthority": ""
   },
   {
     "collectionSymbol": "degenerate_ape_academy",
@@ -108,7 +119,8 @@
     "image": "https://bafkreie44hlb5xve225n6p2siebaevxiwha37aefyvs2ul2kx2akalnree.ipfs.nftstorage.link/",
     "onChainCollectionAddress": "DSwfRF1jhhu6HpSuzaig1G19kzP73PfLZBPLofkw6fLD",
     "mintAddress": "",
-    "value": "11"
+    "value": "11",
+    "updateAuthority": ""
   },
   {
     "collectionSymbol": "famous_fox_federation",
@@ -117,6 +129,7 @@
     "image": "https://bafkreihrmpd2qqlnwqsceyp572kkvzet4mzn2ndrnteodwyhgu4m4gnzwq.ipfs.nftstorage.link/",
     "onChainCollectionAddress": "BUjZjAS2vbbb65g7Z1Ca9ZRVYoJscURG5L3AkVvHP9ac",
     "mintAddress": "",
-    "value": "12"
+    "value": "12",
+    "updateAuthority": ""
   }
 ]

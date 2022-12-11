@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Web3 Dev",
+    "name": "Kevin",
+    "username": "thedevkev",
+    "twitter": "https://twitter.com/kevincaughman",
+    "img": "team/t1.png"
+  },
+  {
+    "title": "Web3 Dev",
+    "name": "Yan",
+    "username": "Alan999",
+    "twitter": "https://twitter.com/YanH12363856",
+    "img": "team/t2.png"
+  },
+  {
+    "title": "Web3 Dev",
+    "name": "",
+    "username": "noname",
+    "twitter": "https://twitter.com/0xShabu",
+    "img": "team/t3.png"
+  },
+  {
+    "title": "Project Manager",
+    "name": "",
+    "username": "Tchiki",
+    "twitter": "https://twitter.com/TchikiBalianos",
+    "img": "team/t4.png"
+  },
+  {
+    "title": "Designer",
+    "name": "",
+    "username": "Gentleman",
+    "twitter": "https://twitter.com/heismar05",
+    "img": "team/t5.png"
+  }
+]

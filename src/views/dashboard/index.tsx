@@ -112,7 +112,7 @@ export const DashboardView: FC = () => {
             renderOption={renderCollection}
             renderValue={renderValue}
             onChange={(value) => {
-              console.log(value);
+              //console.log(value);
               setCollection(value.toString());
             }}
             value={collection}

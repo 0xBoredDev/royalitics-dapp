@@ -6,6 +6,7 @@ export class Collection {
   onChainCollectionAddress: string;
   mintAddress: string;
   value: string;
+  updateAuthortity: string;
   constructor(
     collectionSymbol: string,
     name: string,
@@ -13,7 +14,8 @@ export class Collection {
     image: string,
     onChainCollectionAddress: string,
     mintAddress: string,
-    value: string
+    value: string,
+    updateAuthortity: string
   ) {
     collectionSymbol = collectionSymbol;
     name = name;
@@ -22,5 +24,6 @@ export class Collection {
     onChainCollectionAddress = onChainCollectionAddress;
     mintAddress = mintAddress;
     value = value;
+    updateAuthortity = updateAuthortity;
   }
 }

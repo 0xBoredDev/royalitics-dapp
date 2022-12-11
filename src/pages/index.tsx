@@ -6,8 +6,8 @@ const Home: NextPage = (props) => {
   return (
     <div>
       <Head>
-        <title>Smart Analytics</title>
-        <meta name="description" content="Smart Analytics" />
+        <title>Smart Royalitics</title>
+        <meta name="description" content="Smart Royalitics" />
       </Head>
       <HomeView />
     </div>
