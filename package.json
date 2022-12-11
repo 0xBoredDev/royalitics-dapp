@@ -34,6 +34,7 @@
     "react-loader-spinner": "^5.3.4",
     "react-select-search": "^4.1.6",
     "recharts": "^2.1.16",
+    "swiper": "^8.4.5",
     "tweetnacl": "^1.0.3",
     "zustand": "^3.6.9"
   },

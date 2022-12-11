@@ -30,3 +30,92 @@ a {
   /* object-fit: cover; */
   background-size: cover;
 }
+
+.design-card {
+  position: relative;
+}
+
+.team-img {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 10px;
+  padding: 0 15px;
+}
+
+.member-info {
+  display: flex;
+  justify-content: center;
+}
+
+.member-title {
+  font-size: 1.3em;
+  color: #f1f0ed;
+  font-family: "IntegralCF-Regular";
+  font-weight: 400;
+  letter-spacing: 0.2vw;
+  text-align: center;
+  margin: 0 !important;
+}
+
+.member-name1 {
+  color: #f1f0ed;
+  font-family: "IntegralCF-Bold";
+  font-size: 1.5em;
+  font-weight: 900;
+  margin: 0 !important;
+}
+
+.member-name2 {
+  color: #f1f0ed;
+  font-family: "IntegralCF-Regular";
+  font-size: 1.5em;
+  font-weight: 400;
+  margin: 0 !important;
+}
+
+.member-icon {
+  color: #f1f0ed;
+  font-size: 1.2vw;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.member-icon:hover {
+  color: #f1f0ed;
+  scale: 1.3 !important;
+}
+
+/* swiper */
+.swiper {
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide-active .design-card img {
+  -webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0);
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 18em !important;
+  margin-bottom: 30px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
+
+.swiper-pagination-bullet {
+  background: gray !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: white !important;
+}
