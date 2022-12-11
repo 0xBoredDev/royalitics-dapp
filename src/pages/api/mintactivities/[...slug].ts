@@ -31,7 +31,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   var request = {
     method: "get",
     url: url,
-    headers: { Accept: "application/json" },
+    //headers: { Accept: "application/json" },
   };
 
   try {

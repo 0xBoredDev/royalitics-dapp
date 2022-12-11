@@ -23,6 +23,8 @@ import { getFeeDataPoints } from "utils/converter";
 import { getMintActivities } from "../../queries/queries";
 import Table from "../../components/Table";
 import { TransactionRow } from "../../utils/makeData";
+import { Audio } from  'react-loader-spinner'
+//import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 ChartJS.register(
   ArcElement,
@@ -144,6 +146,8 @@ export const AnalyticsView: FC = () => {
   const [lineData, setLineData] = useState({ labels: [], datasets: [] });
   // console.log(collection.name);
   const [tableData, setTableData] = useState([]);
+  let [loading, setLoading] = useState(false);
+
   let currentDay = parseFloat(moment().format("D"));
   let currentMonth = moment().format("MMM");
   let bottomLabels = [];
@@ -154,7 +158,7 @@ export const AnalyticsView: FC = () => {
   const createLineData = async (data) => {
     const { labels, collectedDataPoints, uncollectedDataPoints } =
       getFeeDataPoints(data);
-    console.log(`collectedDataPoints=${collectedDataPoints}`);
+    //console.log(`collectedDataPoints=${collectedDataPoints}`);
     setLabels(labels);
     setCollectedDataPoints(collectedDataPoints);
     setUncollectedDataPoints(uncollectedDataPoints);
@@ -187,7 +191,7 @@ export const AnalyticsView: FC = () => {
   };
 
   const getCollectionSalesData = async (collection) => {
-    console.log(collection);
+    //console.log(collection);
     setCollection(collection);
     // const updateauthority = "yootn8Kf22CQczC732psp7qEqxwPGSDQCFZHkzoXp25";
     // const collectionsymbol = "y00ts";
@@ -201,7 +205,10 @@ export const AnalyticsView: FC = () => {
       before
     );
 
-    convertToChartData(data);
+    setLoading(false);
+    if (data.status === 200) {      
+      convertToChartData(data);
+    }
 
     /* test data */
     // convertToChartData(sales);
@@ -330,7 +337,7 @@ export const AnalyticsView: FC = () => {
         sellerFee,
       }); */
     });
-    console.log(chartData);
+    //console.log(chartData);
     createLineData(chartData);
   }
 
@@ -362,6 +369,7 @@ export const AnalyticsView: FC = () => {
           renderValue={renderValue}
           onChange={(value) => {
             // setCollection(collections[Number(value)]);
+            setLoading(true);
             getCollectionSalesData(collections[Number(value)]);
             getTableData();
             value = "";
@@ -393,23 +401,40 @@ export const AnalyticsView: FC = () => {
               The Data shown below is for Dec 7th-10th 2022
             </p>
           </div> */}
-          <section className="py-4">
-            <div className="grid grid-cols-5 gap-4">
-              <div className="col-span-3">
-                <div className="p-8 ">
-                  <Line data={lineData} />
+          <div>
+            {loading === true && (
+              <Audio
+                height = "80"
+                width = "80"
+                radius = "9"
+                color = 'green'
+                ariaLabel = 'three-dots-loading'
+                wrapperStyle
+                wrapperClass
+              />            
+            )}
+          </div>          
+            {loading === false && (
+            <section className="py-4">
+              <div className="grid grid-cols-5 gap-4">
+                <div className="col-span-3">
+                  <div className="p-8 ">
+                    <Line data={lineData} />
+                  </div>
+                </div>
+                <div className="col-span-2">
+                  <div className="p-8 ">
+                    <Pie data={pieData} />
+                  </div>
                 </div>
               </div>
-              <div className="col-span-2">
-                <div className="p-8 ">
-                  <Pie data={pieData} />
-                </div>
-              </div>
-            </div>
-          </section>
-          <section className="py-4">
-            <Table tableData={tableData} />
-          </section>
+            </section>
+            )}
+            {loading === false && (
+            <section className="py-4">
+              <Table tableData={tableData} />
+            </section>
+            )}
         </div>
       ) : (
         <></>
