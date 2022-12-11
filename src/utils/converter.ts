@@ -1,7 +1,7 @@
 import moment from "moment";
 
 export const getFeeDataPoints = (data) => {
-  console.log("getFeeDataPoints");
+  //console.log("getFeeDataPoints");
   let labels = [];
   let temp = [];
   let collectedDataPoints = [];
@@ -16,7 +16,7 @@ export const getFeeDataPoints = (data) => {
     temp.push({ day: i, collected: 0, uncollected: 0 });
   }
 
-  console.log(data);
+  //console.log(data);
 
   data.forEach((d) => {
     temp.find((i) => i.day == d.day).collected += d.royaltiesCollected;
@@ -28,6 +28,6 @@ export const getFeeDataPoints = (data) => {
     uncollectedDataPoints.push(t.uncollected);
   });
 
-  console.log(labels, collectedDataPoints, uncollectedDataPoints);
+  //console.log(labels, collectedDataPoints, uncollectedDataPoints);
   return { labels, collectedDataPoints, uncollectedDataPoints };
 };

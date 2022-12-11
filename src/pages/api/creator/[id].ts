@@ -20,7 +20,7 @@ export default function handler(
       res.status(200).json(response.data.properties?.creators); 
    })
    .catch(function (error) {
-      console.log(error.message);
+      //console.log(error.message);
       res.status(500).json(error.message);
    });
 }

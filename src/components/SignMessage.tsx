@@ -23,7 +23,7 @@ export const SignMessage: FC = () => {
             notify({ type: 'success', message: 'Sign message successful!', txid: bs58.encode(signature) });
         } catch (error: any) {
             notify({ type: 'error', message: `Sign Message failed!`, description: error?.message });
-            console.log('error', `Sign Message failed! ${error?.message}`);
+            //console.log('error', `Sign Message failed! ${error?.message}`);
         }
     }, [publicKey, notify, signMessage]);
 

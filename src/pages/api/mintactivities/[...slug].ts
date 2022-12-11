@@ -4,7 +4,7 @@ import moment from "moment";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { slug } = req.query;
-  console.log(slug);
+  //console.log(slug);
   if (!slug || slug.length < 3) {
     res.status(400).json({
       message:

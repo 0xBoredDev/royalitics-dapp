@@ -10,7 +10,7 @@ export const SendTransaction: FC = () => {
     const onClick = useCallback(async () => {
         if (!publicKey) {
             notify({ type: 'error', message: `Wallet not connected!` });
-            console.log('error', `Send Transaction: Wallet not connected!`);
+            //console.log('error', `Send Transaction: Wallet not connected!`);
             return;
         }
 
@@ -30,7 +30,7 @@ export const SendTransaction: FC = () => {
             notify({ type: 'success', message: 'Transaction successful!', txid: signature });
         } catch (error: any) {
             notify({ type: 'error', message: `Transaction failed!`, description: error?.message, txid: signature });
-            console.log('error', `Transaction failed! ${error?.message}`, signature);
+            //console.log('error', `Transaction failed! ${error?.message}`, signature);
             return;
         }
     }, [publicKey, notify, connection, sendTransaction]);
