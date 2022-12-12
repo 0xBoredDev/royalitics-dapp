@@ -100,13 +100,11 @@ const dataByMP = [
 function renderValue(valueProps, snapshot, className) {
   return (
     <label className="relative flex text-gray-400 text-slate-700 block">
-      <SearchIcon className="pointer-events-none w-6 h-6 absolute top-1/2 transform -translate-y-1/2 left-3 " />
+      <SearchIcon className="pointer-events-none w-6 h-6 absolute top-1/2 transform -translate-y-1/2 left-3" />
       {/* "flex items-center rounded-full w-full h-12 pl-12 text-white bg-black border-2 border-slate-700 p-2 text-sm hover:border-purple-700" */}
       <input
         {...valueProps}
-        className={
-          "flex items-center rounded-full w-full h-12 pl-12 text-white bg-black border-2 border-slate-700 p-2 text-sm hover:border-purple-700 focus:outline-none"
-        }
+        className="flex items-center rounded-full w-full h-12 pl-12 text-white bg-black border-2 border-slate-700 p-2 text-sm hover:border-purple-700 focus:outline-none"
       />
     </label>
   );
@@ -118,7 +116,7 @@ function renderCollection(props, option, _, className) {
       <button
         {...props}
         className={
-          "flex items-center w-full text-white hover:bg-purple-700 p-2 text-sm"
+          "flex items-center w-full text-white bg-black hover:bg-purple-700 p-2 text-sm"
         }
         type="button"
       >
@@ -199,22 +197,24 @@ export const AnalyticsView: FC = () => {
     const collectionsymbol = collection.collectionSymbol;
     const before = moment().utc().format().replace("Z", "");
 
-    // const data = await getMintActivities(
-    //   updateauthority,
-    //   collectionsymbol,
-    //   before
-    // );
+    const data = await getMintActivities(
+      updateauthority,
+      collectionsymbol,
+      before
+    );
 
-    // setLoading(false);
-    // if (data.status === 200) {
-    //   convertToChartData(data);
-    // }
+    //TODO: Add try catch for error and display in place of charts.
+    if (data.status === 200) {
+      convertToChartData(data);
+    }
+
+    setLoading(false);
 
     /* test data */
-    setTimeout(() => {
-      convertToChartData(sales);
-      setLoading(false);
-    }, 4000);
+    // setTimeout(() => {
+    //   convertToChartData(sales);
+    //   setLoading(false);
+    // }, 4000);
     /* end test data */
   };
 
@@ -231,7 +231,7 @@ export const AnalyticsView: FC = () => {
   }
 
   function convertToChartData(data: Array<any>) {
-    //data is being returned
+    //console.log("convertToChartData()");
     //console.log(data);
     let chartData = [];
 
@@ -323,9 +323,6 @@ export const AnalyticsView: FC = () => {
 
       chartData.push(sale);
 
-      //console.log(`sale.day=${sale.day}`);
-      //console.log(`sale.royaltiesCollected=${sale.royaltiesCollected}`);
-
       /* chartData.push({
         day,
         month,
@@ -371,8 +368,8 @@ export const AnalyticsView: FC = () => {
           renderOption={renderCollection}
           renderValue={renderValue}
           onChange={(value) => {
-            // setCollection(collections[Number(value)]);
             setLoading(true);
+            // setCollection(collections[Number(value)]);
             getCollectionSalesData(collections[Number(value)]);
             getTableData();
             value = "";

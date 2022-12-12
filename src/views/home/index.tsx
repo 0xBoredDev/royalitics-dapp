@@ -72,7 +72,6 @@ export const HomeView: FC = ({}) => {
     <div className="w-full h-screen" id="homebg">
       <div className="md:hero">
         <div className="md:hero-content flex flex-col">
-          {/* <img src={logo.src} className="" alt="hero-logo" /> */}
           <div className="inline-block align-middle">
             <h1 className="text-center text-4xl sm:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-tr from-[#9945FF] to-[#14F195]">
               Smart Royalitics
@@ -88,7 +87,7 @@ export const HomeView: FC = ({}) => {
             <div className="text-center">
               <RequestRoyalties />
             </div>
-            <div className="text-center">Connected address: {address}</div>
+            {/* <div className="text-center">Connected address: {address}</div> */}
           </div>
           <div
             className="flex flex-row absolute space-x-2 overflow-hidden h-48"

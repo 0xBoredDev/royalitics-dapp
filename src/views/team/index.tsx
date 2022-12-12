@@ -45,7 +45,10 @@ export const TeamView: FC = ({}) => {
               3rd Party Support
             </h1>
             <p className="w-full text-md sm:text-2xl text-center text-slate-300 my-2">
-              Coral Cube
+              CORAL_CUBE_API_BASE=https://api.coralcube.cc/
+              MAGIC_EDEN_API_BASE=https://api-mainnet.magiceden.dev/v2/
+              NFTPORT_API_BASE=https://api.nftport.xyz/
+              BLOCKCHAINDAEMON_API_BASE=https://svc.blockdaemon.com/universal/
             </p>
             <div className="text-center"></div>
           </div>
