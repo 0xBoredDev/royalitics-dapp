@@ -144,7 +144,7 @@ export const AnalyticsView: FC = () => {
   const [lineData, setLineData] = useState({ labels: [], datasets: [] });
   // console.log(collection.name);
   const [tableData, setTableData] = useState([]);
-  let [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   let currentDay = parseFloat(moment().format("D"));
   let currentMonth = moment().format("MMM");
