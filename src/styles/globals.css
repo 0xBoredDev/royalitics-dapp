@@ -24,6 +24,10 @@ a {
   background-color: #707070;
 }
 
+.home-bottom {
+  bottom: 0;
+}
+
 #homebg {
   background-image: url("../images/home_bg.png");
   background-repeat: no-repeat;
@@ -118,4 +122,22 @@ a {
 
 .swiper-pagination-bullet-active {
   background: white !important;
+}
+
+@media screen and (min-width: 640px) and (max-width: 767.98px) {
+  .home-bottom {
+    bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023.98px) {
+  .home-bottom {
+    bottom: 30px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .home-bottom {
+    bottom: 40px;
+  }
 }

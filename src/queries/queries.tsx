@@ -31,8 +31,13 @@ export const getNfts = async (on_chain_collection_key: string) => {
   return response.json();
 };
 
-export const getTransactions = async (mint_address: string) => {
-  const response = await fetch("/api/transactions/" + mint_address);
+export const getTransactionsByAccount = async (account: string) => {
+  const response = await fetch("/api/transactionsByAccount/" + account);
+  return response.json();
+};
+
+export const getTransactionsByNft = async (mint_address: string) => {
+  const response = await fetch("/api/transactionsByNft/" + mint_address);
   return response.json();
 };
 
