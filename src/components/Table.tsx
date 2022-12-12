@@ -1,17 +1,15 @@
-import type { NextPage } from "next";
-
 import {
   ColumnDef,
   flexRender,
-  getPaginationRowModel,
   getCoreRowModel,
+  getPaginationRowModel,
   getSortedRowModel,
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-import { TransactionRow } from "../utils/makeData";
-import React, { FC } from "react";
 import moment from "moment";
+import React, { FC } from "react";
+import { TransactionRow } from "../utils/makeData";
 
 interface TableProps {
   tableData: TransactionRow[];
@@ -31,7 +29,7 @@ const Table: FC<TableProps> = ({ tableData }) => {
       {
         accessorKey: "name",
         cell: (info) => info.getValue(),
-        header: () => <span>Buyer</span>,
+        header: () => <span>Name</span>,
         footer: (props) => props.column.id,
       },
       {
@@ -43,7 +41,7 @@ const Table: FC<TableProps> = ({ tableData }) => {
       {
         accessorKey: "seller",
         cell: (info) => info.getValue(),
-        header: () => <span>Buyer</span>,
+        header: () => <span>Seller</span>,
         footer: (props) => props.column.id,
       },
       {
@@ -57,7 +55,6 @@ const Table: FC<TableProps> = ({ tableData }) => {
   );
 
   const [data, setData] = React.useState<TransactionRow[]>(tableData);
-  // const refreshData = () => setData(() => makeData(100000));
 
   const table = useReactTable({
     data,

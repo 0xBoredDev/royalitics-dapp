@@ -118,7 +118,7 @@ function renderCollection(props, option, _, className) {
       <button
         {...props}
         className={
-          "flex items-center w-full text-white hover:bg-purple-700 p-2 text-sm"
+          "flex items-center w-full text-white bg-neutral hover:bg-purple-700 p-2 text-sm"
         }
         type="button"
       >
