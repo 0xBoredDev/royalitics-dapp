@@ -4,7 +4,11 @@ A smart way to see insights on royalties gained and lost for your NFT collection
 
 # WEBSITE
 
-https://smart-royalitics-smartroyalitics.vercel.app/
+https://smart-royalitics.vercel.app/
+
+# DEMO Video:
+
+https://www.youtube.com/watch?v=8uGNC2xg1Ww
 
 # Sample Page IMG
 
@@ -39,6 +43,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 ## Features
 
 -Specialized tracking tool or platform
+-Tracks royalties paid for NFT Collection
 -Tracks royalties earned from NFTs
 -Tracks royalties lost due to NFT resales or transfers
 -Provides detailed information and analysis on NFT collection performance
