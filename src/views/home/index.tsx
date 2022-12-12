@@ -1,7 +1,5 @@
 // Next, React
 import { FC, useEffect, useState } from "react";
-// import Link from "next/link";
-// import logo from "../../../public/logo.png";
 import { collections } from "data/collections";
 import { gsap } from "gsap";
 
@@ -70,8 +68,8 @@ export const HomeView: FC = ({}) => {
 
   return (
     <div className="w-full h-screen" id="homebg">
-      <div className="md:hero">
-        <div className="md:hero-content flex flex-col">
+      <div className="hero">
+        <div className="hero-content flex flex-col">
           <div className="inline-block align-middle">
             <h1 className="text-center text-4xl sm:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-tr from-[#9945FF] to-[#14F195]">
               Smart Royalitics
@@ -87,12 +85,11 @@ export const HomeView: FC = ({}) => {
             <div className="text-center">
               <RequestRoyalties />
             </div>
-            {/* <div className="text-center">Connected address: {address}</div> */}
           </div>
-          <div
-            className="flex flex-row absolute space-x-2 overflow-hidden h-48"
-            style={{ bottom: "40px" }}
-          >
+          <div className="flex flex-row absolute home-bottom space-x-2 h-32 tracking-wide text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-tr from-[#9945FF] to-[#14F195]/0 opacity-50">
+            Featured Collections
+          </div>
+          <div className="flex flex-row absolute home-bottom space-x-2 overflow-hidden h-48">
             {collectionItems()}
           </div>
         </div>

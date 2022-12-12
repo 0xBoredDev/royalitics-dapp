@@ -16,7 +16,7 @@ import { sales } from "data/sales";
 import { Collection } from "models/collection";
 import { Sale } from "models/sale";
 import moment from "moment";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { Line, Pie } from "react-chartjs-2";
 import SelectSearch from "react-select-search";
 import { getFeeDataPoints } from "utils/converter";
@@ -24,7 +24,6 @@ import { getMintActivities } from "../../queries/queries";
 import Table from "../../components/Table";
 import { TransactionRow } from "../../utils/makeData";
 import { Dna } from "react-loader-spinner";
-//import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 ChartJS.register(
   ArcElement,
@@ -101,7 +100,6 @@ function renderValue(valueProps, snapshot, className) {
   return (
     <label className="relative flex text-gray-400 text-slate-700 block">
       <SearchIcon className="pointer-events-none w-6 h-6 absolute top-1/2 transform -translate-y-1/2 left-3" />
-      {/* "flex items-center rounded-full w-full h-12 pl-12 text-white bg-black border-2 border-slate-700 p-2 text-sm hover:border-purple-700" */}
       <input
         {...valueProps}
         className="flex items-center rounded-full w-full h-12 pl-12 text-white bg-black border-2 border-slate-700 p-2 text-sm hover:border-purple-700 focus:outline-none"
@@ -138,20 +136,19 @@ export const AnalyticsView: FC = () => {
     new Collection("", "", "", "", "", "", "", "")
   );
   const [labels, setLabels] = useState([]);
-  // const [feeDataPoints, setFeeDataPoints] = useState([]);
   const [collectedDataPoints, setCollectedDataPoints] = useState([]);
   const [uncollectedDataPoints, setUncollectedDataPoints] = useState([]);
+  const [useTestData, setUseTestData] = useState(false);
+  const [dataFetched, setDataFetched] = useState(false);
   const [lineData, setLineData] = useState({ labels: [], datasets: [] });
-  // console.log(collection.name);
   const [tableData, setTableData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  let currentDay = parseFloat(moment().format("D"));
-  let currentMonth = moment().format("MMM");
-  let bottomLabels = [];
-  for (let i = 1; i <= currentDay; i++) {
-    bottomLabels.push(`${currentMonth} ${i}`);
-  }
+  const triggerToggle = async () => {
+    getCollectionSalesData(collection);
+    getTableData();
+  };
 
   const createLineData = async (data) => {
     const { labels, collectedDataPoints, uncollectedDataPoints } =
@@ -190,32 +187,44 @@ export const AnalyticsView: FC = () => {
 
   const getCollectionSalesData = async (collection) => {
     //console.log(collection);
-    setCollection(collection);
-    // const updateauthority = "yootn8Kf22CQczC732psp7qEqxwPGSDQCFZHkzoXp25";
-    // const collectionsymbol = "y00ts";
-    const updateauthority = collection.updateAuthority;
-    const collectionsymbol = collection.collectionSymbol;
-    const before = moment().utc().format().replace("Z", "");
+    // console.log(`useTestData = ${useTestData}`);
+    try {
+      if (useTestData) {
+        setTimeout(() => {
+          convertToChartData(sales);
+          setLoading(false);
+          setDataFetched(true);
+        }, 3000);
+      } else {
+        setCollection(collection);
+        // const updateauthority = "yootn8Kf22CQczC732psp7qEqxwPGSDQCFZHkzoXp25";
+        // const collectionsymbol = "y00ts";
+        const updateauthority = collection.updateAuthority;
+        const collectionsymbol = collection.collectionSymbol;
+        const before = moment().utc().format().replace("Z", "");
 
-    const data = await getMintActivities(
-      updateauthority,
-      collectionsymbol,
-      before
-    );
-
-    //TODO: Add try catch for error and display in place of charts.
-    if (data.status === 200) {
-      convertToChartData(data);
+        const data = await getMintActivities(
+          updateauthority,
+          collectionsymbol,
+          before
+        );
+        // console.log(data);
+        if (data.status === 200) {
+          convertToChartData(data);
+          setLoading(false);
+          setDataFetched(true);
+        } else {
+          throw new Error(
+            "Currently the servers are experiencing an outage please try again later"
+          );
+        }
+      }
+    } catch (error: any) {
+      // console.log("error");
+      // console.log(error);
+      setError(error.message);
+      setLoading(false);
     }
-
-    setLoading(false);
-
-    /* test data */
-    // setTimeout(() => {
-    //   convertToChartData(sales);
-    //   setLoading(false);
-    // }, 4000);
-    /* end test data */
   };
 
   function convertToDecimal(value) {
@@ -396,54 +405,63 @@ export const AnalyticsView: FC = () => {
               </div>
             </div>
           </section>
-          {/* <div className="flex flex-row px-8 mx-auto justify-center">
-            <p className="text-lg">
-              The Data shown below is for Dec 7th-10th 2022
-            </p>
-          </div> */}
           <div className="flex flex-row px-8 mx-auto justify-center">
-            {loading === true && (
-              <Dna
-                height="120"
-                width="120"
-                ariaLabel="dna-loading"
-                wrapperStyle={{}}
-                wrapperClass="dna-wrapper"
-              />
-            )}
+            <Dna
+              height="120"
+              width="120"
+              ariaLabel="dna-loading"
+              wrapperStyle={{}}
+              wrapperClass="dna-wrapper"
+              visible={loading}
+            />
           </div>
-          {loading === false && (
-            <section className="py-4">
-              <div className="grid grid-cols-3 gap-4 md:grid-cols-5">
-                <div className="col-span-3">
-                  <div className="p-8 ">
-                    <Line data={lineData} />
-                  </div>
-                </div>
-                <div className="col-span-2">
-                  <div className="p-8 ">
-                    <Pie data={pieData} />
-                  </div>
+          {error && (
+            <>
+              <div className="flex flex-row px-8 mx-auto justify-center">
+                <p className="text-3xl font-bold pb-5">{error}</p>
+              </div>
+              <div className="flex flex-row px-8 mx-auto justify-center text-center">
+                <div className="flex flex-col mx-auto justify-center">
+                  <p>"for judges"</p>
+                  <a
+                    className="px-8 m-2 btn animate-pulse bg-gradient-to-r from-[#9945FF] to-[#14F195] hover:from-pink-500 hover:to-yellow-500 ..."
+                    onClick={(e) => {
+                      setLoading(true);
+                      setUseTestData(true);
+                      triggerToggle();
+                    }}
+                  >
+                    Use Test Data
+                  </a>
                 </div>
               </div>
-            </section>
+            </>
           )}
-          {loading === false && (
-            <section className="py-4">
-              <Table tableData={tableData} />
-            </section>
+          {dataFetched && (
+            <>
+              <section className="py-4">
+                <div className="grid grid-cols-3 gap-4 md:grid-cols-5">
+                  <div className="col-span-3">
+                    <div className="p-8 ">
+                      <Line data={lineData} />
+                    </div>
+                  </div>
+                  <div className="col-span-2">
+                    <div className="p-8 ">
+                      <Pie data={pieData} />
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section className="py-4">
+                <Table tableData={tableData} />
+              </section>
+            </>
           )}
         </div>
       ) : (
         <></>
       )}
-      {/* <div className="md:hero-content flex flex-col">
-        <RoyaltyByMonth data={dataByMonth} />
-        <h2 className="font-bold text-lg">Top payers</h2>
-        <RoyaltyByUser data={dataByUser} />
-        <h2 className="font-bold text-lg">Total by marketplace</h2>
-        <TotalByMarketplace data={dataByMP} />
-      </div> */}
     </div>
   );
 };
