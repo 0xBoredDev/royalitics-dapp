@@ -29,6 +29,11 @@ export const ContentContainer: FC = (props) => {
               <a className="text-xl font-600">Team</a>
             </Link>
           </li>
+          <li>
+            <Link href="/mint">
+              <a className="text-xl font-600">Mint</a>
+            </Link>
+          </li>
         </ul>
       </div>
     </div>

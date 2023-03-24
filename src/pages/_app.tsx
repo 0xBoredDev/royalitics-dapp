@@ -8,6 +8,7 @@ import { Footer } from "../components/Footer";
 import Notifications from "../components/Notification";
 
 import "../styles/select-search.css";
+import "../styles/metaplex.css";
 require("@solana/wallet-adapter-react-ui/styles.css");
 require("../styles/globals.css");
 

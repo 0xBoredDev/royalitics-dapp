@@ -1,6 +1,7 @@
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
-import { LAMPORTS_PER_SOL, TransactionSignature } from "@solana/web3.js";
+import { LAMPORTS_PER_SOL, Keypair } from "@solana/web3.js";
 import { FC, useCallback, useState } from "react";
+import bs58 from 'bs58';
 import { notify } from "../utils/notifications";
 import {
   getCreator,
@@ -23,6 +24,15 @@ export const RequestRoyalties: FC = () => {
 
   const onClick = useCallback(async () => {
     setLoading(true);
+
+    // const keypair = Keypair.fromSecretKey(
+    //   bs58.decode(
+    //     ""
+    //   )
+    // );
+    // console.log(keypair);
+    // setLoading(false);
+
     let walletAddress: string = "";
     let totalPaid = 0;
     let lastTransactionDate = "";
